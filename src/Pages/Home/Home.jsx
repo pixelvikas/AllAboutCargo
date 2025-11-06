@@ -5,6 +5,16 @@ import Navbar from "../../Components/Navbar";
 import About1 from "../../assets/about1.png";
 import About2 from "../../assets/about2.png";
 import Whoarewe from "../../assets/whoarewe.png";
+
+import exp1 from "../../assets/exp1.png";
+import exp2 from "../../assets/exp2.png";
+import exp3 from "../../assets/exp3.png";
+import exp4 from "../../assets/exp4.png";
+import exp5 from "../../assets/exp5.png";
+import exp6 from "../../assets/exp6.png";
+import exp7 from "../../assets/exp7.png";
+import exp8 from "../../assets/exp8.png";
+
 import { FiArrowUpRight } from "react-icons/fi"; // import from react-icons
 import {
   FaTruckLoading,
@@ -52,6 +62,17 @@ const Home = () => {
       title: "Placement Assistance",
       desc: "Connect with top employers and kickstart your career.",
     },
+  ];
+
+  const chips = [
+    { img: exp1, label: "Hands-on Training", cls: "c1" },
+    { img: exp8, label: "Career", cls: "c2" },
+    { img: exp2, label: "Global Network", cls: "c3" },
+    { img: exp7, label: "Experience", cls: "c4" },
+    { img: exp3, label: "Flexible Learning", cls: "c5" },
+    { img: exp4, label: "Growth", cls: "c6" },
+    { img: exp6, label: "Certifications", cls: "c7" },
+    { img: exp5, label: "Latest Trends", cls: "c8" },
   ];
   return (
     <>
@@ -233,6 +254,40 @@ const Home = () => {
             <div className="who-img">
               <img src={Whoarewe} alt="Team presenting freight analytics" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="exp">
+        <div className="exp-inner">
+          {/* LEFT: circular chips */}
+          <div className="exp-cloud" style={{ "--n": chips.length }}>
+            {chips.map(({ img, label }, i) => (
+              <div className="chip" key={label} style={{ "--i": i }}>
+                <span>{label}</span>
+                <img src={img} alt={label} />
+              </div>
+            ))}
+          </div>
+
+          {/* RIGHT: copy */}
+          <div className="exp-copy">
+            <span className="exp-eyebrow">
+              <span className="pink">#</span> OUR EXPERTISE
+            </span>
+
+            <h2 className="exp-title">
+              Certified and experienced <span>coaching professionals</span>
+            </h2>
+
+            <p className="exp-desc">
+              Enhance your skills with expert-led courses that bridge the gap
+              between education and employment.
+            </p>
+
+            <a href="#contact" className="exp-cta">
+              Get in Touch
+            </a>
           </div>
         </div>
       </section>
