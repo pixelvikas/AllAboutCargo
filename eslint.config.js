@@ -1,95 +1,65 @@
 import js from "@eslint/js";
 import globals from "globals";
+import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import jsxA11y from "eslint-plugin-jsx-a11y";
-import importPlugin from "eslint-plugin-import";
-import { defineConfig, globalIgnores } from "eslint/config";
+import eslintImport from "eslint-plugin-import";
 
-const isProd = process.env.NODE_ENV === "production";
-
-export default defineConfig([
-  // ignore build output, lockfiles, and assets
-  globalIgnores([
-    "dist",
-    "build",
-    "coverage",
-    "*.min.*",
-    "node_modules",
-    "public",
-  ]),
+export default [
+  { ignores: ["dist", "node_modules", "build", "public"] }, // Ignoring unnecessary directories
   {
-    files: ["**/*.{js,jsx}"],
-    ignores: ["**/*.d.ts"], // just in case
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        ecmaFeatures: { jsx: true },
+        sourceType: "module",
+      },
+    },
     plugins: {
+      react: react,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
       "jsx-a11y": jsxA11y,
-      import: importPlugin,
-    },
-    extends: [
-      js.configs.recommended,
-      reactHooks.configs["recommended-latest"],
-      reactRefresh.configs.vite, // enables Fast Refresh-safe rules for Vite
-      "plugin:jsx-a11y/recommended",
-      "plugin:import/recommended",
-    ],
-    languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: "module",
-      globals: { ...globals.browser, ...globals.es2021 },
-      parserOptions: {
-        ecmaFeatures: { jsx: true },
-      },
-    },
-    settings: {
-      react: { version: "detect" },
-      "import/resolver": {
-        node: { extensions: [".js", ".jsx"] },
-      },
+      import: eslintImport,
     },
     rules: {
-      /* General hygiene */
-      "no-unused-vars": [
+      ...js.configs.recommended.rules,
+      ...react.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
+      "react-refresh/only-export-components": [
         "warn",
-        { argsIgnorePattern: "^_", varsIgnorePattern: "^[A-Z_]" },
+        { allowConstantExport: true },
       ],
-      "no-console": isProd ? ["error", { allow: ["warn", "error"] }] : "off",
-      "no-debugger": isProd ? "error" : "off",
-
-      /* Import rules */
-      "import/first": "error",
-      "import/newline-after-import": "warn",
-      "import/no-duplicates": "warn",
+      "react/jsx-uses-react": "off", // Not needed in React 17+
+      "react/react-in-jsx-scope": "off", // Not needed in React 17+
+      "react/prop-types": "off", // Disable if using TypeScript
+      "jsx-a11y/alt-text": "warn", // Ensure accessibility for images
       "import/order": [
-        "warn",
+        "error",
         {
           groups: [
-            ["builtin", "external"],
-            ["internal", "parent", "sibling", "index"],
-            "type",
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index",
           ],
           "newlines-between": "always",
-          alphabetize: { order: "asc", caseInsensitive: true },
         },
       ],
-
-      /* Accessibility tweaks */
-      "jsx-a11y/anchor-is-valid": "warn",
-      "jsx-a11y/no-autofocus": "off",
-
-      /* React Hooks (already from preset, but locking strictness) */
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
+      "import/no-unresolved": "error",
     },
-  },
-
-  // Test files: relaxed rules for dev tooling/specs
-  {
-    files: ["**/*.{spec,test}.{js,jsx}"],
-    rules: {
-      "no-console": "off",
-      "no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
+    "import/no-unresolved": ["error", { caseSensitive: true }],
   },
-]);
+];

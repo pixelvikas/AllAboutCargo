@@ -910,3 +910,202 @@
     transition: none;
   }
 }
+/* Shell */
+.why {
+  padding: clamp(32px, 5vw, 64px) 16px;
+}
+
+/* Card: responsive frame that preserves image while allowing content */
+.why-card {
+  position: relative;
+  margin: 0 auto;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+  background: #000;
+
+  /* Responsive sizing: ratio + min/max heights */
+  aspect-ratio: 16 / 8;
+  min-height: clamp(360px, 48vw, 560px);
+  max-height: 680px;
+}
+
+/* Background image */
+.why-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05);
+}
+
+/* Overlay: readable left, clear right */
+.why-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      900px 420px at 26% 50%,
+      rgba(0, 0, 0, 0.28),
+      rgba(0, 0, 0, 0.68)
+    ),
+    linear-gradient(
+      90deg,
+      rgba(208, 23, 62, 0.42) 0%,
+      rgba(150, 23, 130, 0.22) 36%,
+      rgba(0, 0, 0, 0.22) 64%,
+      rgba(0, 0, 0, 0.06) 100%
+    );
+  pointer-events: none;
+}
+
+/* Content block pinned to left */
+.why-content {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  padding: clamp(18px, 4vw, 32px) clamp(18px, 4.6vw, 42px);
+  max-width: 760px;
+  display: grid;
+  align-content: start;
+  gap: clamp(10px, 2vw, 16px);
+}
+
+/* Eyebrow */
+.why-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0.95;
+}
+
+/* List */
+.why-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  /* Two columns on wide screens for compactness */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(10px, 1.8vw, 14px);
+}
+@media (min-width: 900px) {
+  .why-list {
+    column-gap: clamp(18px, 3vw, 28px);
+    row-gap: clamp(10px, 1.8vw, 14px);
+  }
+}
+
+/* WHY ITEM — responsive spacing and structure */
+.why-item {
+  min-width: 0; /* prevents text overflow in grid layouts */
+  margin: clamp(0.75rem, 2vw, 1.5rem) 0; /* responsive vertical spacing */
+  padding: clamp(0.25rem, 0.8vw, 0.5rem) 0; /* subtle internal breathing space */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* light divider for structure */
+}
+
+/* Remove the border for the last item in a column */
+.why-item:last-child {
+  border-bottom: none;
+}
+
+/* Larger screens: tighter spacing, better rhythm in 2-column layout */
+@media (min-width: 900px) {
+  .why-item {
+    margin: clamp(0.5rem, 1.2vw, 1rem) 0;
+    border-bottom: none; /* cleaner multi-column view */
+  }
+}
+
+/* Smaller screens: more separation between items for readability */
+@media (max-width: 600px) {
+  .why-item {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Row */
+.why-line {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+/* Number + text */
+.why-num {
+  font-weight: 900;
+  font-size: clamp(18px, 2.4vw, 22px);
+  line-height: 1.1;
+  flex: 0 0 auto;
+}
+.why-title {
+  font-weight: 800;
+  font-size: clamp(18px, 2.4vw, 22px);
+  line-height: 1.15;
+  color: #ffffff;
+}
+.why-desc {
+  margin-top: 4px;
+  color: #f0e6ee;
+  opacity: 0.9;
+  font-size: clamp(12.5px, 1.6vw, 14px);
+  line-height: 1.55;
+}
+
+/* Tight mobile tuning */
+@media (max-width: 900px) {
+  .why-card {
+    border-radius: 18px;
+    aspect-ratio: auto;
+    min-height: clamp(360px, 60vw, 520px);
+  }
+
+  /* overlay slightly stronger to protect white text */
+  .why-overlay {
+    background: radial-gradient(
+        700px 360px at 24% 50%,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.72)
+      ),
+      linear-gradient(
+        90deg,
+        rgba(208, 23, 62, 0.44) 0%,
+        rgba(150, 23, 130, 0.24) 34%,
+        rgba(0, 0, 0, 0.26) 62%,
+        rgba(0, 0, 0, 0.08) 100%
+      );
+  }
+
+  .why-content {
+    max-width: 100%;
+  }
+}
+
+/* Small phones */
+@media (max-width: 560px) {
+  .why-content {
+    padding: 16px;
+  }
+  .why-num {
+    font-size: 18px;
+  }
+  .why-title {
+    font-size: 18px;
+  }
+  .why-desc {
+    font-size: 13px;
+  }
+}
+
+/* Prevent jumpy transitions for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
