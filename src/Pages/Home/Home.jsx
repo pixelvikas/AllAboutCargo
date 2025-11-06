@@ -23,8 +23,14 @@ import {
   FaBoxes,
   FaIdCard,
   FaCogs,
-  FaUserTie,
   FaBuilding,
+} from "react-icons/fa";
+
+import {
+  FaBookOpen,
+  FaChalkboardTeacher,
+  FaCertificate,
+  FaUserTie,
 } from "react-icons/fa";
 
 /* ---------- static data outside component ---------- */
@@ -99,7 +105,32 @@ const points = [
     desc: "Online, hybrid, and in-person options to suit your schedule.",
   },
 ];
-
+const STEPS = [
+  {
+    id: 1,
+    icon: <FaBookOpen />,
+    title: "01. Choose a Course",
+    desc: "Select from our specialized freight & logistics programs.",
+  },
+  {
+    id: 2,
+    icon: <FaChalkboardTeacher />,
+    title: "02. Learn from Experts",
+    desc: "Engage in live training sessions & hands-on exercises.",
+  },
+  {
+    id: 3,
+    icon: <FaCertificate />,
+    title: "03. Get Certified",
+    desc: "Earn industry-recognized credentials.",
+  },
+  {
+    id: 4,
+    icon: <FaUserTie />,
+    title: "04. Land Your Dream Job",
+    desc: "Leverage our placement support to secure top roles.",
+  },
+];
 /* ---------- component ---------- */
 function Home() {
   return (
@@ -340,6 +371,48 @@ function Home() {
               ))}
             </ol>
           </div>
+        </div>
+      </section>
+
+      <section className="hww">
+        <div className="hww-inner">
+          {/* Header */}
+          <div className="hww-head">
+            <span className="hww-eyebrow">
+              <span className="pink">#</span> HOW WE WORK
+            </span>
+            <h2 className="hww-title">
+              Step by step process for <span>achieving success</span>
+            </h2>
+          </div>
+
+          {/* Steps */}
+          <div className="hww-grid" role="list">
+            {STEPS.map((s) => (
+              <div className="hww-item" role="listitem" key={s.id}>
+                <div className="hww-icon" aria-hidden>
+                  {s.icon}
+                </div>
+                <div className="hww-copy">
+                  <h3 className="hww-name">{s.title}</h3>
+                  <p className="hww-desc">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="marquee">
+        <div className="marquee-inner">
+          <span data-text="ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ">
+            ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT
+            CARGO •
+          </span>
+          <span data-text="ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ">
+            ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT
+            CARGO •
+          </span>
         </div>
       </section>
     </>
