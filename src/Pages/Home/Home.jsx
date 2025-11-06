@@ -17,6 +17,7 @@ import exp6 from "../../assets/exp6.png";
 import exp7 from "../../assets/exp7.png";
 import exp8 from "../../assets/exp8.png";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { FiPlus, FiMinus, FiPhoneCall } from "react-icons/fi";
 
 import { FiArrowUpRight } from "react-icons/fi";
 import {
@@ -135,22 +136,44 @@ const STEPS = [
 
 const TESTIMONIALS = [
   {
-    img: "../../src/assets/testimonial1.png",
+    img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80&auto=format&fit=crop",
     quote:
       "All About Cargo transformed my career! The hands-on training and placement assistance helped me land a great job in logistics.",
     name: "Rahul S.",
   },
   {
-    img: "../../src/assets/testimonial1.png",
+    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80&auto=format&fit=crop",
     quote:
       "Super practical sessions and mentorship. I could apply concepts immediately at work.",
     name: "Neha K.",
   },
   {
-    img: "../../src/assets/testimonial1.png",
+    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80&auto=format&fit=crop",
     quote:
       "Excellent curriculum and network. Highly recommend to anyone entering freight.",
     name: "Arun P.",
+  },
+];
+const DATA = [
+  {
+    q: "Who can enroll in your courses?",
+    a: "Anyone interested in logistics, freight forwarding, or global trade—students, freshers, working professionals, and entrepreneurs.",
+  },
+  {
+    q: "Are your certifications recognized?",
+    a: "Yes, we offer IATA, FIATA, and industry-recognized certifications to boost your career prospects.",
+  },
+  {
+    q: "Do you offer job placement assistance?",
+    a: "Yes, we provide placement support through our hiring partners and alumni network.",
+  },
+  {
+    q: "How long are the courses?",
+    a: "Programs range from short bootcamps (2–4 weeks) to comprehensive masterclasses (8–12 weeks).",
+  },
+  {
+    q: "Do you offer online training?",
+    a: "We offer online, hybrid, and in-person options to suit your schedule.",
   },
 ];
 /* ---------- component ---------- */
@@ -161,6 +184,16 @@ function Home() {
   const next = () => setIdx((p) => (p + 1) % TESTIMONIALS.length);
 
   const t = TESTIMONIALS[idx];
+
+  const [open, setOpen] = React.useState(1); // second open by default
+  const bodyRefs = React.useRef([]);
+
+  const getHeight = (i) => {
+    const el = bodyRefs.current[i];
+    return el ? el.scrollHeight : 0;
+  };
+
+  const toggle = (i) => setOpen((prev) => (prev === i ? -1 : i));
 
   return (
     <>
@@ -479,6 +512,76 @@ function Home() {
             Join thousands of successful students who have built rewarding
             careers in logistics.
           </a>
+        </div>
+      </section>
+      <section className="faq">
+        <div className="faq-inner">
+          {/* LEFT */}
+          <div className="faq-left">
+            <span className="faq-eyebrow">
+              <span className="pink">#</span> FAQ
+            </span>
+
+            <h2 className="faq-title">
+              Your coaching questions
+              <br />
+              <span>answered simply here</span>
+            </h2>
+
+            <div className="faq-card">
+              <div className="faq-card-title">
+                Still have you any questions?
+              </div>
+              <p className="faq-card-desc">
+                We’re ready to help you to answer any questions
+              </p>
+              <div className="faq-phone">
+                <span className="phone-icon" aria-hidden>
+                  <FiPhoneCall />
+                </span>
+                <span className="phone-num">+022 22334455</span>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT: Smooth Accordion */}
+          <div className="faq-right">
+            {DATA.map((item, i) => {
+              const active = i === open;
+              return (
+                <div
+                  key={item.q}
+                  className={`acc ${active ? "acc--active" : ""}`}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={active}
+                  onClick={() => toggle(i)}
+                  onKeyDown={(e) =>
+                    (e.key === "Enter" || e.key === " ") && toggle(i)
+                  }
+                >
+                  <div className="acc-head">
+                    <div className="acc-q">{item.q}</div>
+                    <div className={`acc-cta ${active ? "is-open" : ""}`}>
+                      {active ? <FiMinus /> : <FiPlus />}
+                    </div>
+                  </div>
+
+                  <div
+                    className="acc-wrapper"
+                    style={{ maxHeight: active ? `${getHeight(i)}px` : "0px" }}
+                  >
+                    <div
+                      className="acc-body"
+                      ref={(el) => (bodyRefs.current[i] = el)}
+                    >
+                      <p>{item.a}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
     </>
