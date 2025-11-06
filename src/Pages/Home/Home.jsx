@@ -16,6 +16,7 @@ import exp5 from "../../assets/exp5.png";
 import exp6 from "../../assets/exp6.png";
 import exp7 from "../../assets/exp7.png";
 import exp8 from "../../assets/exp8.png";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import { FiArrowUpRight } from "react-icons/fi";
 import {
@@ -131,8 +132,36 @@ const STEPS = [
     desc: "Leverage our placement support to secure top roles.",
   },
 ];
+
+const TESTIMONIALS = [
+  {
+    img: "../../src/assets/testimonial1.png",
+    quote:
+      "All About Cargo transformed my career! The hands-on training and placement assistance helped me land a great job in logistics.",
+    name: "Rahul S.",
+  },
+  {
+    img: "../../src/assets/testimonial1.png",
+    quote:
+      "Super practical sessions and mentorship. I could apply concepts immediately at work.",
+    name: "Neha K.",
+  },
+  {
+    img: "../../src/assets/testimonial1.png",
+    quote:
+      "Excellent curriculum and network. Highly recommend to anyone entering freight.",
+    name: "Arun P.",
+  },
+];
 /* ---------- component ---------- */
 function Home() {
+  const [idx, setIdx] = React.useState(0);
+
+  const prev = () => setIdx((p) => (p === 0 ? TESTIMONIALS.length - 1 : p - 1));
+  const next = () => setIdx((p) => (p + 1) % TESTIMONIALS.length);
+
+  const t = TESTIMONIALS[idx];
+
   return (
     <>
       {/* HERO */}
@@ -175,7 +204,6 @@ function Home() {
           </section>
         </div>
       </div>
-
       {/* ABOUT */}
       <section className="about">
         <div className="about-media">
@@ -224,7 +252,6 @@ function Home() {
           </a>
         </div>
       </section>
-
       {/* SERVICES */}
       <section className="services">
         <div className="services-inner">
@@ -255,7 +282,6 @@ function Home() {
           </div>
         </div>
       </section>
-
       {/* WHO WE ARE */}
       <section className="who">
         <div className="who-inner">
@@ -312,7 +338,6 @@ function Home() {
           </div>
         </div>
       </section>
-
       {/* EXPERTISE */}
       <section className="exp">
         <div className="exp-inner">
@@ -342,7 +367,6 @@ function Home() {
           </div>
         </div>
       </section>
-
       <section className="why">
         <div className="why-card">
           <img
@@ -373,7 +397,6 @@ function Home() {
           </div>
         </div>
       </section>
-
       <section className="hww">
         <div className="hww-inner">
           {/* Header */}
@@ -402,17 +425,60 @@ function Home() {
           </div>
         </div>
       </section>
-
       <section className="marquee">
         <div className="marquee-inner">
-          <span data-text="ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ">
-            ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT
-            CARGO •
+          <span data-text="ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ">
+            ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT
+            CARGO *
           </span>
-          <span data-text="ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ">
-            ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT CARGO • ALL ABOUT
-            CARGO •
+          <span data-text="ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ">
+            ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT
+            CARGO *
           </span>
+        </div>
+      </section>
+      <section className="t-wrap">
+        <div className="t-card">
+          {/* left headline */}
+          <div className="t-left">
+            <span className="t-eyebrow">
+              <span className="pink">#</span> TESTIMONIALS
+            </span>
+            <h2 className="t-title">
+              Real success
+              <br />
+              stories from our <span>students</span>
+            </h2>
+          </div>
+
+          {/* right testimonial */}
+          <div className="t-right">
+            <div className="t-item">
+              <div className="t-photo">
+                <img src={t.img} alt={`${t.name} testimonial`} />
+              </div>
+
+              <div className="t-quote">
+                <p className="t-text">{t.quote}</p>
+                <p className="t-name">{t.name}</p>
+              </div>
+            </div>
+
+            <div className="t-arrows">
+              <button className="t-btn" aria-label="Previous" onClick={prev}>
+                <FiChevronLeft />
+              </button>
+              <button className="t-btn" aria-label="Next" onClick={next}>
+                <FiChevronRight />
+              </button>
+            </div>
+          </div>
+
+          {/* full-width CTA */}
+          <a href="#join" className="t-cta">
+            Join thousands of successful students who have built rewarding
+            careers in logistics.
+          </a>
         </div>
       </section>
     </>

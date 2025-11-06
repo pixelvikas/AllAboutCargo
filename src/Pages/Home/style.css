@@ -1226,7 +1226,6 @@
 
 /* ====== MARQUEE SECTION ====== */
 .marquee {
-  background: #f5f3f4; /* light neutral background */
   overflow: hidden;
   white-space: nowrap;
   width: 100%;
@@ -1251,7 +1250,7 @@
   padding-right: 3rem;
   text-transform: uppercase;
   position: relative;
-  color: #ffffff; /* inner fill stays white */
+  color: #f2f2f2; /* inner fill stays white */
 
   /* reserve border width for gradient outline */
   -webkit-text-stroke: 3px transparent;
@@ -1290,7 +1289,7 @@
 
 /* ====== Responsive ====== */
 @media (max-width: 768px) {
-  .marquee { 
+  .marquee {
     padding: 10px 0;
   }
 
@@ -1303,5 +1302,189 @@
 
   .marquee-inner span::before {
     -webkit-text-stroke: 2px transparent;
+  }
+}
+
+/* Section spacing */
+.t-wrap {
+  padding: 32px 16px 48px;
+}
+
+/* Main rounded container */
+.t-card {
+  width: 100%;
+  margin: 0 auto;
+  background: #2b0024; /* deep plum */
+  color: #ffffff;
+  border-radius: 22px;
+  padding: clamp(20px, 4vw, 34px);
+  position: relative;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
+
+  display: grid;
+  grid-template-columns: 1.05fr 1.15fr;
+  gap: clamp(18px, 4vw, 40px);
+}
+
+/* Eyebrow */
+.t-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  opacity: 0.9;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.t-eyebrow .hash {
+  background: linear-gradient(90deg, #d0173e, #961782);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  margin-right: 6px;
+}
+
+/* Title (left) */
+.t-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.12;
+  color: #ffffff;
+}
+.t-title span {
+  background: linear-gradient(90deg, #d0173e, #961782);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Right block */
+.t-right {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+/* Testimonial item layout */
+.t-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+/* Photo card */
+.t-photo {
+  width: clamp(140px, 22vw, 210px);
+  height: clamp(140px, 22vw, 210px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+.t-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Quote + author */
+.t-quote {
+  min-width: 0;
+}
+.t-text {
+  margin: 0 0 10px 0;
+  font-size: clamp(13.5px, 1.6vw, 14.5px);
+  line-height: 1.6;
+  color: #f4e8f1;
+  opacity: 0.95;
+}
+.t-name {
+  margin: 0;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Arrows */
+.t-arrows {
+  display: flex;
+  gap: 10px;
+  margin-left: calc(clamp(140px, 22vw, 210px) + 8px);
+}
+.t-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  cursor: pointer;
+  color: #ffffff;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.t-btn:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14),
+    rgba(255, 255, 255, 0.06)
+  );
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+.t-btn svg {
+  font-size: 18px;
+}
+
+/* CTA pill (full width inside card) */
+.t-cta {
+  grid-column: 1 / -1;
+  margin-top: clamp(12px, 2.6vw, 22px);
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: linear-gradient(to bottom, #d0173e, #961782); /* brand gradient */
+  box-shadow: 0 12px 26px rgba(150, 23, 130, 0.32);
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.t-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(208, 23, 62, 0.34);
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .t-card {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    border-radius: 18px;
+  }
+  .t-arrows {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .t-item {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .t-photo {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  .t-quote {
+    text-align: left;
   }
 }
