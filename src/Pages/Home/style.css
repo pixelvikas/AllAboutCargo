@@ -721,6 +721,8 @@
   padding: 46px 16px;
   grid-template-columns: 1.2fr 1fr;
   gap: 24px 40px;
+  grid-template-areas: "left right";
+
   align-items: center;
 }
 
@@ -735,6 +737,13 @@
   place-items: center;
 }
 
+.exp-cloud {
+  grid-area: left;
+}
+
+.exp-copy {
+  grid-area: right;
+}
 .chip {
   position: absolute;
   top: 50%;
@@ -830,15 +839,16 @@
 
 /* ===== Responsiveness ===== */
 
-/* Large → single column on smaller laptops/tablets */
+/* Large → single column (reversed order on small) */
 @media (max-width: 1024px) {
   .exp-inner {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "right"
+      "left"; /* 👈 reverses the stacking order */
     gap: 26px;
   }
 }
-
-/* Tablet: slightly smaller circle */
 @media (max-width: 820px) {
   .exp-cloud {
     --size: 300px;
