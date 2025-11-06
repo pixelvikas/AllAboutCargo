@@ -4,6 +4,7 @@ import hero from "../../assets/hero.png"; // your image
 import Navbar from "../../Components/Navbar";
 import About1 from "../../assets/about1.png";
 import About2 from "../../assets/about2.png";
+import Whoarewe from "../../assets/whoarewe.png";
 import { FiArrowUpRight } from "react-icons/fi"; // import from react-icons
 import {
   FaTruckLoading,
@@ -171,6 +172,67 @@ const Home = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="who">
+        <div className="who-inner">
+          {/* LEFT */}
+          <div className="who-left">
+            <span className="who-eyebrow">
+              <span className="pink">#</span> WHO WE ARE
+            </span>
+
+            <h2 className="who-title">
+              Unlock your potential <span>with our expertise</span>
+            </h2>
+
+            <p className="who-desc">
+              All About Cargo is India’s first dedicated freight forwarding
+              coaching and business mentorship platform, designed by logistics
+              experts with real-world experience in shipping, customs, and
+              global trade. We believe freight forwarding is more than moving
+              cargo — it’s about connecting businesses, enabling exports, and
+              driving global growth. Through structured learning, real case
+              studies, and business strategies, we guide you from the basics of
+              logistics to building a 100-crore freight enterprise.
+            </p>
+
+            <div className="who-stats">
+              <div className="who-stat">
+                <div className="who-pill">
+                  <span>100%</span>
+                </div>
+                <div className="who-stat-text">
+                  Hands-On
+                  <br />
+                  Training
+                </div>
+              </div>
+
+              <div className="who-stat">
+                <div className="who-pill">
+                  <span>100+</span>
+                </div>
+                <div className="who-stat-text">
+                  Hiring
+                  <br />
+                  Partners
+                </div>
+              </div>
+            </div>
+
+            <a href="#experts" className="who-cta">
+              Meet our experts
+            </a>
+          </div>
+
+          {/* RIGHT */}
+          <div className="who-right">
+            <div className="who-img">
+              <img src={Whoarewe} alt="Team presenting freight analytics" />
+            </div>
           </div>
         </div>
       </section>
