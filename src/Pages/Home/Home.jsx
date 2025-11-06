@@ -5,8 +5,53 @@ import Navbar from "../../Components/Navbar";
 import About1 from "../../assets/about1.png";
 import About2 from "../../assets/about2.png";
 import { FiArrowUpRight } from "react-icons/fi"; // import from react-icons
-
+import {
+  FaTruckLoading,
+  FaBoxes,
+  FaIdCard,
+  FaCogs,
+  FaUserTie,
+  FaBuilding,
+} from "react-icons/fa";
 const Home = () => {
+  const services = [
+    {
+      id: 1,
+      icon: <FaTruckLoading />,
+      title: "Freight Forwarding Fundamentals",
+      desc: "Learn how the global logistics ecosystem works...",
+    },
+    {
+      id: 2,
+      icon: <FaBoxes />,
+      title: "Business Setup & Growth Coaching",
+      desc: "Get step-by-step guidance on how to start, scale, and sustain...",
+    },
+    {
+      id: 3,
+      icon: <FaIdCard />,
+      title: "International Trade Masterclass",
+      desc: "Understand export-import processes, government regulations...",
+    },
+    {
+      id: 4,
+      icon: <FaCogs />,
+      title: "Digital Freight Operations",
+      desc: "Master tools of logistics automation, CRM systems, AI-based pricing...",
+    },
+    {
+      id: 5,
+      icon: <FaUserTie />,
+      title: "Mentorship & Consulting",
+      desc: "Work one-on-one with industry experts to identify bottlenecks...",
+    },
+    {
+      id: 6,
+      icon: <FaBuilding />,
+      title: "Placement Assistance",
+      desc: "Connect with top employers and kickstart your career.",
+    },
+  ];
   return (
     <>
       <div className="home-wrap">
@@ -97,6 +142,36 @@ const Home = () => {
           <a href="#learn" className="about-cta">
             Learn More <FiArrowUpRight className="arrow-icon" />
           </a>
+        </div>
+      </section>
+      <section className="services">
+        <div className="services-inner">
+          {/* Left intro */}
+          <div className="svc-left">
+            <span className="svc-eyebrow">
+              <span className="pink">#</span> SERVICES
+            </span>
+            <h2 className="svc-title">
+              Comprehensive Logistics Training for <span>Career Growth</span>
+            </h2>
+
+            <a href="#all-services" className="svc-cta">
+              View all services
+            </a>
+          </div>
+
+          {/* Right grid */}
+          <div className="svc-grid">
+            {services.map((s) => (
+              <div className="svc-item" key={s.id}>
+                <div className="svc-icon">{s.icon}</div>
+                <div className="svc-copy">
+                  <h3 className="svc-name">{s.title}</h3>
+                  <p className="svc-desc">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </>
