@@ -20,7 +20,6 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Navbar />
 
       {/* Suspense fallback while lazy components load */}
       <Suspense fallback={<div>Loading...</div>}>
@@ -38,7 +37,6 @@ function App() {
         </main>
       </Suspense>
 
-      <Footer />
     </Router>
   );
 }
