@@ -189,3 +189,81 @@
     display: none;
   }
 }
+
+/* Components/coaching-stats.css */
+
+.coach {
+  padding: 10px 12px 0;
+}
+
+.coach__card {
+  background: #3a0834; /* deep plum */
+  color: #fff;
+  border-radius: 22px;
+  padding: 28px 28px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr; /* left bigger */
+  gap: 24px;
+}
+
+/* Left copy */
+.coach__title {
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3.8vw, 40px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.coach__highlight {
+  color: #bf0e83; /* magenta highlight */
+}
+
+.coach__subtitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+/* Right stats grid */
+.coach__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 115px 36px;
+  align-content: start;
+}
+
+.coach__stat {
+  display: grid;
+  gap: 6px;
+}
+
+.coach__value {
+  font-size: clamp(26px, 3.2vw, 34px);
+  font-weight: 700;
+}
+
+.coach__label {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .coach__card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 24px 18px;
+  }
+  .coach__subtitle {
+    max-width: none;
+  }
+
+  .coach__stats {
+    gap: 28px 36px;
+  }
+}

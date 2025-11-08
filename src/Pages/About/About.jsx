@@ -116,6 +116,45 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <section className="coach">
+        <div className="coach__card">
+          {/* Left copy */}
+          <div className="coach__left">
+            <h2 className="coach__title">
+              Certified and <br />
+              experienced <span className="coach__highlight">coaching</span>
+            </h2>
+            <p className="coach__subtitle">
+              Choosing us means partnering with experienced coaches who are
+              dedicated to unlocking your potential.
+            </p>
+          </div>
+
+          {/* Right stats (2x2) */}
+          <div className="coach__stats">
+            <div className="coach__stat">
+              <div className="coach__value">100%</div>
+              <div className="coach__label">Certification</div>
+            </div>
+
+            <div className="coach__stat">
+              <div className="coach__value">20+</div>
+              <div className="coach__label">Hiring Partners</div>
+            </div>
+
+            <div className="coach__stat">
+              <div className="coach__value">95%</div>
+              <div className="coach__label">Placement Rate</div>
+            </div>
+
+            <div className="coach__stat">
+              <div className="coach__value">20+</div>
+              <div className="coach__label">Courses</div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };
