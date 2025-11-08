@@ -1,0 +1,137 @@
+/* ---------- HERO ---------- */
+.about-hero {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  margin: 16px;
+  min-height: 450px; /* 🔥 Increased height for desktop hero */
+  isolation: isolate;
+
+  /* Keep header on top and center content vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: max(12px, env(safe-area-inset-left));
+  padding-right: max(12px, env(safe-area-inset-right));
+}
+
+/* ---------- Background ---------- */
+.about-hero__bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("../../src/assets/pageherobg.png");
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+/* ---------- Overlay ---------- */
+.about-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      120% 100% at 70% 10%,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 0.55) 55%,
+      rgba(0, 0, 0, 0.7) 100%
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.62) 100%);
+  z-index: -1;
+}
+
+/* ---------- Centered Content ---------- */
+.about-hero__content {
+  position: relative;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto; /* centers vertically */
+  padding: 70px 24px; /* slightly more breathing room */
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  z-index: 5;
+}
+
+/* ---------- Title ---------- */
+.about-hero__title {
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+  font-size: clamp(32px, 5vw, 52px); /* slightly larger for prominence */
+}
+
+/* ---------- Breadcrumb ---------- */
+.about-hero__breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  letter-spacing: 0.2px;
+}
+
+.about-hero__breadcrumb .crumb {
+  color: #e5e7eb;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.about-hero__breadcrumb .crumb:hover {
+  opacity: 0.85;
+}
+
+.about-hero__breadcrumb .crumb.current {
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.crumb-sep {
+  color: #f22fbf;
+  opacity: 0.85;
+}
+
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 1024px) {
+  .about-hero {
+    min-height: 460px; /* Increased tablet height */
+  }
+  .about-hero__content {
+    padding: 56px 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    min-height: 400px; /* taller mobile view */
+  }
+  .about-hero__content {
+    padding: 48px 18px;
+    gap: 10px;
+  }
+  .about-hero__breadcrumb {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-hero {
+    min-height: 360px; /* taller on small screens */
+  }
+  .about-hero__title {
+    font-size: clamp(26px, 8vw, 38px);
+  }
+  .about-hero__breadcrumb {
+    gap: 6px;
+  }
+}
+
+/* ---------- Accessibility (Reduced Motion) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .about-hero__breadcrumb .crumb,
+  .about-hero__breadcrumb .crumb:hover {
+    transition: none;
+  }
+}
