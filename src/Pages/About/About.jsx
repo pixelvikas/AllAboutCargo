@@ -40,7 +40,7 @@ const About = () => {
     },
   ];
   return (
-    <main className="about-page">
+    <>
       <Hero
         title="About us"
         crumbCurrent="About Us"
@@ -259,7 +259,456 @@ const About = () => {
           </div>
         </div>
       </section>
-    </main>
+      <style>
+        {`
+  /* container */
+.alc {
+  padding: 28px 16px 40px;
+}
+
+.alc__grid {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr; /* left bigger than right */
+  gap: 32px;
+}
+
+/* headline */
+.alc__title {
+  font-size: clamp(28px, 4.4vw, 44px);
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: #0f172a;
+  letter-spacing: 0.2px;
+}
+
+.alc__highlight {
+  color: #bf0e83; /* magenta accent */
+}
+
+/* intro paragraph */
+.alc__intro {
+  margin: 0 0 18px;
+  color: #4b5563;
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+/* mission / vision cards row */
+.alc__cards {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 18px;
+  margin: 18px 0 20px;
+}
+
+.alc__divider {
+  width: 1px;
+  background: #e5e7eb;
+  height: 100%;
+  align-self: stretch;
+}
+
+/* card */
+.alc__card {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 12px;
+}
+
+.alc__iconwrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  color: #fff;
+  background: linear-gradient(to bottom, #d0173e, #961782);
+}
+
+.alc__cardtitle {
+  margin: 0 0 6px;
+  font-size: 18px;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.alc__cardtext {
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* What you'll learn */
+.alc__learn {
+  margin-top: 16px;
+}
+
+.alc__learnhead {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.alc__learnhead h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.alc__list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  color: #4b5563;
+}
+
+.alc__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 6px 0;
+  line-height: 1.55;
+}
+
+.alc__check {
+  min-width: 18px;
+  margin-top: 2px;
+  color: #9b1c86;
+}
+
+/* CTA */
+.alc__cta {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+  background: linear-gradient(to bottom, #d0173e, #961782);
+  background-size: 200% 200%;
+  box-shadow: 0 6px 18px rgba(150, 23, 130, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.3s ease,
+    background-position 0.3s ease;
+}
+.alc__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(150, 23, 130, 0.35);
+  background-position: 0 20%;
+}
+
+/* RIGHT image panel */
+.alc__right {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.alc__photo {
+  width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(16, 24, 40, 0.08);
+  border: 1px solid #f1f5f9;
+}
+
+.alc__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .alc__grid {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 820px) {
+  .alc__grid {
+    grid-template-columns: 1fr;
+  }
+  .alc__right {
+    order: -1; /* put image on top for narrow screens (optional) */
+    margin-bottom: 14px;
+  }
+  .alc__cards {
+    grid-template-columns: 1fr; /* stack mission & vision */
+    gap: 14px;
+  }
+  .alc__divider {
+    display: none;
+  }
+}
+
+/* Components/coaching-stats.css */
+
+.coach {
+  padding: 10px 12px 0;
+}
+
+.coach__card {
+  background: #3c0734; /* deep plum */
+  color: #fff;
+  border-radius: 22px;
+  padding: 28px 28px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr; /* left bigger */
+  gap: 24px;
+}
+
+/* Left copy */
+.coach__title {
+  margin: 0 0 10px;
+  font-size: clamp(26px, 3.8vw, 40px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.coach__highlight {
+  color: #bf0e83; /* magenta highlight */
+}
+
+.coach__subtitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+/* Right stats grid */
+.coach__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 115px 36px;
+  align-content: start;
+}
+
+.coach__stat {
+  display: grid;
+  gap: 6px;
+}
+
+.coach__value {
+  font-size: clamp(26px, 3.2vw, 34px);
+  font-weight: 700;
+}
+
+.coach__label {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .coach__card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 24px 18px;
+  }
+  .coach__subtitle {
+    max-width: none;
+  }
+
+  .coach__stats {
+    gap: 28px 36px;
+  }
+}
+
+/* Shell unchanged from yours */
+.faq {
+  background: #f3f2f1;
+  padding: clamp(28px, 6vw, 56px) 16px;
+}
+.faq-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(18px, 4vw, 40px);
+  align-items: start;
+}
+
+/* Eyebrow/heading/card same as before */
+.faq-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #6e6e6e;
+  margin-bottom: 10px;
+}
+
+.faq-title {
+  margin: 0 0 clamp(16px, 3vw, 26px);
+  font-weight: 800;
+  color: #151515;
+  line-height: 1.15;
+  font-size: clamp(24px, 4.8vw, 40px);
+}
+.faq-title span {
+  background: linear-gradient(90deg, #d0173e, #961782);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+.faq-card {
+  margin-top: clamp(12px, 2.4vw, 18px);
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  padding: 18px;
+  max-width: 320px;
+}
+.faq-card-title {
+  font-weight: 800;
+  color: #171717;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+.faq-card-desc {
+  margin: 0 0 12px;
+  color: #6d6d6d;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.faq-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  color: #161616;
+}
+.phone-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #d0173e, #961782);
+  color: #fff;
+}
+
+/* Accordion list */
+.faq-right {
+  display: grid;
+  gap: 10px;
+}
+
+/* Card */
+.acc {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease,
+    border-color 0.2s ease;
+}
+.acc:hover {
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Active gradient */
+.acc--active {
+  color: #fff;
+  background: linear-gradient(135deg, #d0173e, #961782);
+  border-color: transparent;
+  box-shadow: 0 12px 24px rgba(150, 23, 130, 0.28);
+}
+
+/* Head row */
+.acc-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+.acc-q {
+  font-size: 14px;
+  font-weight: 800;
+  color: inherit;
+}
+
+/* Toggle button with rotation */
+.acc-cta {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #111;
+  background: #fff;
+  transition: transform 0.25s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.acc--active .acc-cta {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+.acc-cta.is-open {
+  transform: rotate(180deg);
+}
+.acc-cta svg {
+  font-size: 16px;
+}
+
+/* Smooth body reveal: wrap animates height; inner animates opacity/slide */
+.acc-wrapper {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.32s ease;
+}
+.acc-body {
+  padding-top: 6px;
+  transform: translateY(-6px);
+  opacity: 0;
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+.acc--active .acc-body {
+  transform: translateY(0);
+  opacity: 1;
+}
+.acc-body p {
+  margin: 8px 2px 4px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #6b6b6b;
+}
+.acc--active .acc-body p {
+  color: #ffeef8;
+  opacity: 0.95;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .faq-inner {
+    grid-template-columns: 1fr;
+  }
+  .faq-card {
+    max-width: 100%;
+  }
+}
+`}
+      </style>
+    </>
   );
 };
 
