@@ -2,10 +2,43 @@ import React from "react";
 import Hero from "../../Components/Hero";
 import "./style.css";
 import bgImage from "../../assets/pageherobg.png";
+import { FiPlus, FiMinus, FiPhoneCall } from "react-icons/fi";
 import { FiTarget, FiAward, FiSmile, FiCheckCircle } from "react-icons/fi";
 import aboutpageimg from "../../assets/aboutpageimg.png";
 
 const About = () => {
+  const [open, setOpen] = React.useState(1); // second open by default
+  const bodyRefs = React.useRef([]);
+
+  const getHeight = (i) => {
+    const el = bodyRefs.current[i];
+    return el ? el.scrollHeight : 0;
+  };
+
+  const toggle = (i) => setOpen((prev) => (prev === i ? -1 : i));
+
+  const DATA = [
+    {
+      q: "Who can enroll in your courses?",
+      a: "Anyone interested in logistics, freight forwarding, or global trade—students, freshers, working professionals, and entrepreneurs.",
+    },
+    {
+      q: "Are your certifications recognized?",
+      a: "Yes, we offer IATA, FIATA, and industry-recognized certifications to boost your career prospects.",
+    },
+    {
+      q: "Do you offer job placement assistance?",
+      a: "Yes, we provide placement support through our hiring partners and alumni network.",
+    },
+    {
+      q: "How long are the courses?",
+      a: "Programs range from short bootcamps (2–4 weeks) to comprehensive masterclasses (8–12 weeks).",
+    },
+    {
+      q: "Do you offer online training?",
+      a: "We offer online, hybrid, and in-person options to suit your schedule.",
+    },
+  ];
   return (
     <main className="about-page">
       <Hero
@@ -152,6 +185,77 @@ const About = () => {
               <div className="coach__value">20+</div>
               <div className="coach__label">Courses</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="faq">
+        <div className="faq-inner">
+          {/* LEFT */}
+          <div className="faq-left">
+            <span className="faq-eyebrow">
+              <span className="pink">#</span> FAQ
+            </span>
+
+            <h2 className="faq-title">
+              Your coaching questions
+              <br />
+              <span>answered simply here</span>
+            </h2>
+
+            <div className="faq-card">
+              <div className="faq-card-title">
+                Still have you any questions?
+              </div>
+              <p className="faq-card-desc">
+                We’re ready to help you to answer any questions
+              </p>
+              <div className="faq-phone">
+                <span className="phone-icon" aria-hidden>
+                  <FiPhoneCall />
+                </span>
+                <span className="phone-num">+022 22334455</span>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT: Smooth Accordion */}
+          <div className="faq-right">
+            {DATA.map((item, i) => {
+              const active = i === open;
+              return (
+                <div
+                  key={item.q}
+                  className={`acc ${active ? "acc--active" : ""}`}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={active}
+                  onClick={() => toggle(i)}
+                  onKeyDown={(e) =>
+                    (e.key === "Enter" || e.key === " ") && toggle(i)
+                  }
+                >
+                  <div className="acc-head">
+                    <div className="acc-q">{item.q}</div>
+                    <div className={`acc-cta ${active ? "is-open" : ""}`}>
+                      {active ? <FiMinus /> : <FiPlus />}
+                    </div>
+                  </div>
+
+                  <div
+                    className="acc-wrapper"
+                    style={{ maxHeight: active ? `${getHeight(i)}px` : "0px" }}
+                  >
+                    <div
+                      className="acc-body"
+                      ref={(el) => (bodyRefs.current[i] = el)}
+                    >
+                      <p>{item.a}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
