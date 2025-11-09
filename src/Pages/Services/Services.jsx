@@ -69,7 +69,7 @@ const Services = () => {
 
               <p className="cg__desc">{c.desc}</p>
 
-              <a href="#" className="cg__link">
+              <a href="/services/23" className="cg__link">
                 Learn More
               </a>
             </article>
