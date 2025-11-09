@@ -1,30 +1,140 @@
 import React from "react";
+import { useParams, Link } from "react-router-dom";
+import { FiArrowUpRight, FiPhone, FiMail } from "react-icons/fi";
+
 import bgImage from "../../assets/pageherobg.png";
 import singleservicebg1 from "../../assets/singleservicebg1.png";
 import singlectasection from "../../assets/singlectasection.png";
-import "./style.css";
-import { FiArrowUpRight, FiPhone, FiMail } from "react-icons/fi";
 
 import Hero from "../../Components/Hero";
+import "./style.css";
+
+/**
+ * Content JSON (extremely easy to extend later)
+ */
+const SERVICES_DATA = {
+  1: {
+    slug: "freight-forwarding",
+    title: "Freight Forwarding Training",
+    crumb: "COURSES / FREIGHT FORWARDING TRAINING",
+    heroImg: bgImage,
+    bannerImg: singleservicebg1,
+    heading: (
+      <>
+        Master the fundamentals of
+        <br />
+        <span className="ss__titleHi">
+          freight forwarding and global logistics.
+        </span>
+      </>
+    ),
+    intro:
+      "This course covers cargo movement, documentation, customs clearance, and multimodal transport to help you navigate international trade.",
+    bullets: [
+      "Learn air, sea, and land freight operations",
+      "Understand Incoterms, shipping regulations, and documentation",
+      "Get hands-on experience in supply chain coordination and cargo handling",
+    ],
+    careers: [
+      "Freight Coordinator",
+      "Operations Manager",
+      "Shipping Executive",
+    ],
+    cta: "Gain in-depth expertise in cargo transportation and logistics operations.",
+  },
+
+  2: {
+    slug: "haz-hazardous-goods",
+    title: "HAZ (Hazardous Goods) Training",
+    crumb: "COURSES / HAZ (HAZARDOUS GOODS) TRAINING",
+    heroImg: bgImage,
+    bannerImg: singleservicebg1, // swap with a haz-specific image if you have one
+    heading: (
+      <>
+        Become compliant & confident with
+        <br />
+        <span className="ss__titleHi">
+          hazardous goods handling & transport.
+        </span>
+      </>
+    ),
+    intro:
+      "Learn safe handling, packaging, classification, and transport rules for dangerous goods across air, sea, and road in line with global standards.",
+    bullets: [
+      "Understand UN classification, packing groups, and labels/placards",
+      "Comply with IATA-DGR, IMDG, ADR, and local regulations",
+      "Prepare correct Shipper’s Declarations and DG documentation",
+    ],
+    careers: [
+      "DG Compliance Officer",
+      "Warehouse & Safety Supervisor",
+      "Logistics Safety Coordinator",
+    ],
+    cta: "Build a safety-first career with industry-recognized hazardous goods expertise.",
+  },
+};
+
+const CATEGORIES = [
+  { id: "1", label: "Freight Forwarding Training" },
+  { id: "2", label: "HAZ (Hazardous Goods) Training" },
+];
+
 const Single = () => {
-  const categories = [
-    "Freight Forwarding Training",
-    "Custom Clearance Training",
-    "Supply Chain & Logistics Course",
-    "Industry Certification Prep",
-    "Dangerous Goods Handling",
-    "Placement Assistance",
-    "Freight Forwarding Training",
-    "Custom Clearance Training",
-    "Supply Chain & Logistics Course",
-  ];
+  const { id } = useParams(); // expects route path="/services/:id"
+  const data = SERVICES_DATA[id];
+
+  // If invalid id → show a friendly fallback
+  if (!data) {
+    return (
+      <>
+        <Hero
+          title="Service Not Found"
+          crumbCurrent="COURSES / NOT FOUND"
+          bgImage={bgImage}
+        />
+        <section className="ss">
+          <div className="ss__grid">
+            <aside className="ss__left" aria-label="Services navigation">
+              <div className="ss__cat">
+                <div className="ss__catHead">
+                  <h4 className="ss__catTitle">Services Category</h4>
+                </div>
+                <ul className="ss__catList" role="list">
+                  {CATEGORIES.map((c) => (
+                    <li key={c.id}>
+                      <Link className="ss__catLink" to={`/services/${c.id}`}>
+                        <span className="ss__catText">{c.label}</span>
+                        <FiArrowUpRight
+                          className="ss__catIcon"
+                          aria-hidden="true"
+                        />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
+
+            <div className="ss__right">
+              <h2 className="ss__title">We couldn’t find that course.</h2>
+              <p className="ss__intro">
+                Please pick a service from the left to continue.
+              </p>
+            </div>
+          </div>
+        </section>
+      </>
+    );
+  }
+
   return (
     <>
       <Hero
-        title="Freight Forwarding Training"
-        crumbCurrent="SERVICES / FREIGHT FORWARDING TRAINING"
-        bgImage={bgImage}
+        title={data.title}
+        crumbCurrent={data.crumb}
+        bgImage={data.heroImg}
       />
+
       <section className="ss">
         <div className="ss__grid">
           {/* LEFT SIDEBAR */}
@@ -36,21 +146,24 @@ const Single = () => {
               </div>
 
               <ul className="ss__catList" role="list">
-                {categories.map((c, i) => (
-                  <li key={i}>
-                    {/* add class "is-active" to whichever is current */}
-                    <a
-                      className={`ss__catLink ${i === 0 ? "is-active" : ""}`}
-                      href="#"
-                    >
-                      <span className="ss__catText">{c}</span>
-                      <FiArrowUpRight
-                        className="ss__catIcon"
-                        aria-hidden="true"
-                      />
-                    </a>
-                  </li>
-                ))}
+                {CATEGORIES.map((c) => {
+                  const isActive = c.id === id;
+                  return (
+                    <li key={c.id}>
+                      <Link
+                        to={`/services/${c.id}`}
+                        className={`ss__catLink ${isActive ? "is-active" : ""}`}
+                        aria-current={isActive ? "page" : undefined}
+                      >
+                        <span className="ss__catText">{c.label}</span>
+                        <FiArrowUpRight
+                          className="ss__catIcon"
+                          aria-hidden="true"
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
@@ -89,54 +202,34 @@ const Single = () => {
           {/* RIGHT CONTENT */}
           <div className="ss__right">
             <figure className="ss__hero">
-              <img src={singleservicebg1} alt="Container ship at sea" />
+              <img src={data.bannerImg} alt={data.title} />
             </figure>
 
-            <h2 className="ss__title">
-              Master the fundamentals of
-              <br />
-              <span className="ss__titleHi">
-                freight forwarding and global logistics.
-              </span>
-            </h2>
+            <h2 className="ss__title">{data.heading}</h2>
 
             <div className="ss__intro">
-              <p>
-                This course covers cargo movement, documentation, customs
-                clearance, and multimodal transport to help you navigate
-                international trade.
-              </p>
+              <p>{data.intro}</p>
 
               <ol className="ss__list">
-                <li>Learn air, sea, and land freight operations</li>
-                <li>
-                  Understand Incoterms, shipping regulations, and documentation
-                </li>
-                <li>
-                  Get hands-on experience in supply chain coordination and cargo
-                  handling
-                </li>
+                {data.bullets.map((b, i) => (
+                  <li key={i}>{b}</li>
+                ))}
               </ol>
             </div>
 
             <div className="ss__career">
               <h4>Career Opportunities:</h4>
               <ul>
-                <li>
-                  <a href="#">Freight Coordinator</a>
-                </li>
-                <li>
-                  <a href="#">Operations Manager</a>
-                </li>
-                <li>
-                  <a href="#">Shipping Executive.</a>
-                </li>
+                {data.careers.map((c, i) => (
+                  <li key={i}>
+                    <a href="#">{c}</a>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <a href="#" className="ss__cta">
-              Gain in-depth expertise in cargo transportation and logistics
-              operations.
+              {data.cta}
             </a>
           </div>
         </div>
