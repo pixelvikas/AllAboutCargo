@@ -11,8 +11,8 @@ import ScrollToTop from "./Components/ScrollToTop";
 // Lazy-loaded Pages
 const Home = lazy(() => import("./Pages/Home/Home"));
 const About = lazy(() => import("./Pages/About/About"));
-const Services = lazy(() => import("./Pages/Services/Services"));
-const SingleService = lazy(() => import("./Pages/Single Service/Single"));
+const Courses = lazy(() => import("./Pages/Courses/Courses"));
+const SingleCourse = lazy(() => import("./Pages/Single Course/Course"));
 const Team = lazy(() => import("./Pages/Team/Team"));
 const Contact = lazy(() => import("./Pages/Contact/Contact"));
 
@@ -30,8 +30,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/services/:id" element={<SingleService />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/courses/:id" element={<SingleCourse />} />
               <Route path="/team" element={<Team />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<div>Page Not Found</div>} />

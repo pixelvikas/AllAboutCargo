@@ -44,7 +44,7 @@ const Footer = () => {
               <a href="/about">About Us</a>
             </li>
             <li>
-              <a href="/services">Services</a>
+              <a href="/courses">Courses</a>
             </li>
             <li>
               <a href="/team">Team</a>
@@ -104,7 +104,7 @@ const Footer = () => {
         <nav className="mol-footer__links" aria-label="Footer links">
           <a href="/">Home</a>
           <a href="/about">About Us</a>
-          <a href="/services">Services</a>
+          <a href="/courses">Courses</a>
           <a href="/team">Our Team</a>
           <a href="/contact">Contact Us</a>
           <a href="/register">Register</a>

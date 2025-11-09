@@ -102,7 +102,7 @@ const Single = () => {
                 <ul className="ss__catList" role="list">
                   {CATEGORIES.map((c) => (
                     <li key={c.id}>
-                      <Link className="ss__catLink" to={`/services/${c.id}`}>
+                      <Link className="ss__catLink" to={`/courses/${c.id}`}>
                         <span className="ss__catText">{c.label}</span>
                         <FiArrowUpRight
                           className="ss__catIcon"
@@ -151,7 +151,7 @@ const Single = () => {
                   return (
                     <li key={c.id}>
                       <Link
-                        to={`/services/${c.id}`}
+                        to={`/courses/${c.id}`}
                         className={`ss__catLink ${isActive ? "is-active" : ""}`}
                         aria-current={isActive ? "page" : undefined}
                       >

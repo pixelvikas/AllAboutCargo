@@ -32,7 +32,7 @@ const Services = () => {
             <article key={c.id} className="cg__card">
               {/* Make the whole card clickable */}
               <Link
-                to={`/services/${c.id}`}
+                to={`/courses/${c.id}`}
                 className="cg__cardLink"
                 aria-label={`Learn more about ${c.title}`}
               >
