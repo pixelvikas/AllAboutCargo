@@ -1,77 +1,55 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Hero from "../../Components/Hero";
 import bgImage from "../../assets/pageherobg.png";
-import {
-  FiTruck,
-  FiBriefcase,
-  FiGlobe,
-  FiCpu,
-  FiUsers,
-  FiGrid,
-} from "react-icons/fi";
 import servicesbannerbg from "../../assets/servicesbannerbg.png";
+import { FiTruck, FiBriefcase } from "react-icons/fi";
 import "./style.css";
+
 const Services = () => {
   const COURSES = [
     {
-      n: 1,
-      title: "Freight Forwarding Fundamentals",
-      desc: "Learn how the global logistics ecosystem works...",
+      id: 1,
+      title: "Freight Forwarding Training",
+      desc: "Master global logistics fundamentals, documents, customs clearance, and multimodal transport with practical case studies.",
       icon: <FiTruck />,
     },
     {
-      n: 2,
-      title: "Business Setup & Growth Coaching",
-      desc: "Get step-by-step guidance on how to start, scale, and sustain a freight forwarding company in India...",
+      id: 2,
+      title: "HAZ (Hazardous Goods) Training",
+      desc: "Learn classification, packing, labeling, documentation, and compliance for handling and transporting dangerous goods.",
       icon: <FiBriefcase />,
     },
-    {
-      n: 3,
-      title: "International Trade Masterclass",
-      desc: "Understand export–import processes, government regulations...",
-      icon: <FiGlobe />,
-    },
-    {
-      n: 4,
-      title: "Digital Freight Operations",
-      desc: "Master the modern tools of logistics automation, CRM systems, AI-based pricing...",
-      icon: <FiCpu />,
-    },
-    {
-      n: 5,
-      title: "Mentorship & Consulting",
-      desc: "Work one-on-one with industry experts to identify business bottlenecks...",
-      icon: <FiUsers />,
-    },
-    {
-      n: 6,
-      title: "Placement Assistance",
-      desc: "Connect with top employers and kickstart your career.",
-      icon: <FiGrid />,
-    },
   ];
+
   return (
     <>
-      <Hero title="Services" crumbCurrent="SERVICES" bgImage={bgImage} />
-      <section className="cg">
+      <Hero title="Courses" crumbCurrent="COURSES" bgImage={bgImage} />
+
+      <section className="cg" aria-labelledby="courses-heading">
         <div className="cg__grid">
           {COURSES.map((c) => (
-            <article key={c.n} className="cg__card">
-              <div className="cg__badge">
-                <span className="cg__badgeIcon">{c.icon}</span>
-              </div>
+            <article key={c.id} className="cg__card">
+              {/* Make the whole card clickable */}
+              <Link
+                to={`/services/${c.id}`}
+                className="cg__cardLink"
+                aria-label={`Learn more about ${c.title}`}
+              >
+                <div className="cg__badge" aria-hidden="true">
+                  <span className="cg__badgeIcon">{c.icon}</span>
+                </div>
 
-              <header className="cg__head">
-                <h3 className="cg__title">
-                  <span className="cg__num">{c.n}.</span> {c.title}
-                </h3>
-              </header>
+                <header className="cg__head">
+                  <h3 className="cg__title">
+                    <span className="cg__num">{c.id}.</span> {c.title}
+                  </h3>
+                </header>
 
-              <p className="cg__desc">{c.desc}</p>
+                <p className="cg__desc">{c.desc}</p>
 
-              <a href="/services/23" className="cg__link">
-                Learn More
-              </a>
+                <span className="cg__link">Learn More</span>
+              </Link>
             </article>
           ))}
         </div>
