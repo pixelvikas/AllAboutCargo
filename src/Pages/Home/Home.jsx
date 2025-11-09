@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./style.css";
 
 import hero from "../../assets/hero.png";
@@ -134,34 +134,40 @@ const STEPS = [
   },
 ];
 
-const TESTIMONIALS = [
+const testimonials = [
   {
     img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80&auto=format&fit=crop",
     quote:
-      "All About Cargo transformed my career! The hands-on training and placement assistance helped me land a great job in logistics.",
-    name: "Rahul S.",
+      "As a fresher, this was very helpful in understanding the basics of freight forwarding and logistics.",
+    name: "Sumit",
   },
   {
     img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80&auto=format&fit=crop",
     quote:
-      "Super practical sessions and mentorship. I could apply concepts immediately at work.",
-    name: "Neha K.",
+      "A very informative and practical course, it helped me understand real-time freight forwarding processes and documentation. Perfect for professionals in logistics and supply chain management.",
+    name: "Snehit",
   },
   {
     img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80&auto=format&fit=crop",
     quote:
-      "Excellent curriculum and network. Highly recommend to anyone entering freight.",
-    name: "Arun P.",
+      "Someone new to logistics, this course on Freight Forwarding and Air Cargo Logistics has been a great learning experience. Our instructor teaches in a very organic and detailed way, helping me understand everything from the legal side of shipments to the history and future of the industry. Every class gives me deeper insight and motivation to build a career in logistics.",
+    name: "Omkar",
+  },
+  {
+    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80&auto=format&fit=crop",
+    quote:
+      "Coming from a non-logistics background, the course really helped me understand the knitty-gritty of freight forwarding and everything that is required to facilitate a global trade.",
+    name: "Anu",
   },
 ];
 const DATA = [
   {
-    q: "Who can enroll in your courses?",
-    a: "Anyone interested in logistics, freight forwarding, or global trade—students, freshers, working professionals, and entrepreneurs.",
+    q: "Who can enrol in this course?",
+    a: "Anyone looking to start or advance their career in logistics, freight forwarding, or hazardous goods handling.",
   },
   {
     q: "Are your certifications recognized?",
-    a: "Yes, we offer IATA, FIATA, and industry-recognized certifications to boost your career prospects.",
+    a: "Yes, our certifications are industry-validated and trusted by logistics companies globally.",
   },
   {
     q: "Do you offer job placement assistance?",
@@ -169,31 +175,42 @@ const DATA = [
   },
   {
     q: "How long are the courses?",
-    a: "Programs range from short bootcamps (2–4 weeks) to comprehensive masterclasses (8–12 weeks).",
+    a: "Each course is designed to be completed in just 8 weeks.",
   },
   {
-    q: "Do you offer online training?",
-    a: "We offer online, hybrid, and in-person options to suit your schedule.",
+    q: "Is this an online or offline training?",
+    a: "All our courses are conducted 100% online, with live sessions and LMS-based learning support.",
   },
 ];
 /* ---------- component ---------- */
 function Home() {
-  const [idx, setIdx] = React.useState(0);
-
-  const prev = () => setIdx((p) => (p === 0 ? TESTIMONIALS.length - 1 : p - 1));
-  const next = () => setIdx((p) => (p + 1) % TESTIMONIALS.length);
-
-  const t = TESTIMONIALS[idx];
-
-  const [open, setOpen] = React.useState(1); // second open by default
-  const bodyRefs = React.useRef([]);
-
-  const getHeight = (i) => {
-    const el = bodyRefs.current[i];
-    return el ? el.scrollHeight : 0;
-  };
-
+  // Accordion (kept from your snippet—if unused, you can remove)
+  const [open, setOpen] = useState(1); // second open by default
+  const bodyRefs = useRef([]);
+  const getHeight = (i) => bodyRefs.current[i]?.scrollHeight ?? 0;
   const toggle = (i) => setOpen((prev) => (prev === i ? -1 : i));
+
+  // Slider
+  const [index, setIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const next = () =>
+    setIndex((prev) => (prev + 1) % (testimonials.length || 1));
+  const prev = () =>
+    setIndex(
+      (prev) =>
+        (prev - 1 + (testimonials.length || 1)) % (testimonials.length || 1)
+    );
+
+  // Auto-slide every 3s (pause on hover)
+  useEffect(() => {
+    if (!testimonials.length || isPaused) return;
+    const id = setInterval(next, 3000);
+    return () => clearInterval(id);
+  }, [isPaused, testimonials.length]); // re-create timer if pause state or data changes
+
+  if (!testimonials.length) return null;
+  const t = testimonials[index];
 
   return (
     <>
@@ -222,12 +239,12 @@ function Home() {
 
             <div className="stats">
               <div className="stat">
-                <div className="stat-number">20+</div>
-                <div className="stat-label">Industry-Relevant Courses</div>
+                <div className="stat-number">2</div>
+                <div className="stat-label">Industry-Focused Courses</div>
               </div>
               <div className="stat">
-                <div className="stat-number">500+</div>
-                <div className="stat-label">Successful Graduates</div>
+                <div className="stat-number">4</div>
+                <div className="stat-label">Learners Already Onboard</div>
               </div>
               <div className="stat">
                 <div className="stat-number">95%</div>
@@ -244,7 +261,7 @@ function Home() {
             <img src={About1} alt="Team learning logistics" />
             <div className="about-badge">
               <span>
-                5+ years of
+                25+ years of
                 <br />
                 experience
               </span>
@@ -286,35 +303,47 @@ function Home() {
         </div>
       </section>
       {/* SERVICES */}
-      <section className="services">
+      <section className="services" id="services">
         <div className="services-inner">
-          <div className="svc-left">
-            <span className="svc-eyebrow">
-              <span className="pink">#</span> SERVICES
-            </span>
-            <h2 className="svc-title">
-              Comprehensive Logistics Training for <span>Career Growth</span>
-            </h2>
-            <a href="#all-services" className="svc-cta">
-              View all services
-            </a>
-          </div>
+          {/* LEFT: sticky + internal scroll */}
+          <aside className="svc-left sticky-col">
+            <div className="svc-scroll">
+              <span className="svc-eyebrow">
+                <span className="pink">#</span> SERVICES
+              </span>
+              <h2 className="svc-title">
+                Comprehensive Logistics Training for <span>Career Growth</span>
+              </h2>
+              <a href="#all-services" className="svc-cta">
+                View all services
+              </a>
 
-          <div className="svc-grid" role="list">
-            {services.map((s) => (
-              <div className="svc-item" role="listitem" key={s.id}>
-                <div className="svc-icon" aria-hidden>
-                  {s.icon}
-                </div>
-                <div className="svc-copy">
-                  <h3 className="svc-name">{s.title}</h3>
-                  <p className="svc-desc">{s.desc}</p>
-                </div>
+              {/* If you have more left-side paragraphs, lists, etc., add here */}
+              {/* <p>...</p> */}
+            </div>
+          </aside>
+
+          {/* RIGHT: sticky + internal scroll */}
+          <div className="svc-right sticky-col">
+            <div className="svc-scroll">
+              <div className="svc-grid" role="list">
+                {services.map((s) => (
+                  <div className="svc-item" role="listitem" key={s.id}>
+                    <div className="svc-icon" aria-hidden>
+                      {s.icon}
+                    </div>
+                    <div className="svc-copy">
+                      <h3 className="svc-name">{s.title}</h3>
+                      <p className="svc-desc">{s.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
+
       {/* WHO WE ARE */}
       <section className="who">
         <div className="who-inner">
@@ -374,15 +403,93 @@ function Home() {
       {/* EXPERTISE */}
       <section className="exp">
         <div className="exp-inner">
-          <div className="exp-cloud" style={{ "--n": String(chips.length) }}>
-            {chips.map(({ img, label }, i) => (
-              <div className="chip" key={label} style={{ "--i": i }}>
-                <span>{label}</span>
-                <img src={img} alt={label} />
+          {/* Left: Flex cloud */}
+          <div className="feature-bub">
+            {/* Row 1 */}
+            <div className="bub-row">
+              <div className="bub bub-wide">
+                <p className="bub-text">Hands-on Training</p>
+                <img
+                  className="bub-img"
+                  src={chips[0].img}
+                  alt={chips[0].label}
+                />
               </div>
-            ))}
-          </div>
+            </div>
 
+            {/* Row 2 */}
+            <div className="bub-row bub-row-split">
+              <div className="bub bub-narrow">
+                <p className="bub-text">Career</p>
+                <img
+                  className="bub-img"
+                  src={chips[1].img}
+                  alt={chips[1].label}
+                />
+              </div>
+              <div className="bub bub-mid">
+                <p className="bub-text">Global Network</p>
+                <img
+                  className="bub-img"
+                  src={chips[2].img}
+                  alt={chips[2].label}
+                />
+              </div>
+            </div>
+
+            {/* Row 3 */}
+            <div className="bub-row bub-row-split">
+              <div className="bub bub-mid">
+                <p className="bub-text">Experience</p>
+                <img
+                  className="bub-img"
+                  src={chips[3].img}
+                  alt={chips[3].label}
+                />
+              </div>
+              <div className="bub bub-wide">
+                <p className="bub-text">Flexible Learning</p>
+                <img
+                  className="bub-img"
+                  src={chips[4].img}
+                  alt={chips[4].label}
+                />
+              </div>
+            </div>
+
+            {/* Row 4 */}
+            <div className="bub-row bub-row-split">
+              <div className="bub bub-mid">
+                <p className="bub-text">Certifications</p>
+                <img
+                  className="bub-img"
+                  src={chips[6].img}
+                  alt={chips[6].label}
+                />
+              </div>
+              <div className="bub bub-mid">
+                <p className="bub-text">Growth</p>
+                <img
+                  className="bub-img"
+                  src={chips[5].img}
+                  alt={chips[5].label}
+                />
+              </div>
+            </div>
+
+            {/* Row 5 */}
+            <div className="bub-row">
+              <div className="bub bub-semi">
+                <p className="bub-text">Latest Trends</p>
+                <img
+                  className="bub-img"
+                  src={chips[7].img}
+                  alt={chips[7].label}
+                />
+              </div>
+            </div>
+          </div>
+          {/* Right: Copy */}
           <div className="exp-copy">
             <span className="exp-eyebrow">
               <span className="pink">#</span> OUR EXPERTISE
@@ -400,6 +507,7 @@ function Home() {
           </div>
         </div>
       </section>
+
       <section className="why">
         <div className="why-card">
           <img
@@ -485,15 +593,19 @@ function Home() {
           </div>
 
           {/* right testimonial */}
-          <div className="t-right">
-            <div className="t-item">
+          <div
+            className="t-right"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            <div className="t-item fade">
               <div className="t-photo">
                 <img src={t.img} alt={`${t.name} testimonial`} />
               </div>
 
               <div className="t-quote">
-                <p className="t-text">{t.quote}</p>
-                <p className="t-name">{t.name}</p>
+                <p className="t-text">"{t.quote}"</p>
+                <p className="t-name">— {t.name}</p>
               </div>
             </div>
 
@@ -1003,12 +1115,12 @@ function Home() {
   .about-badge {
     border-radius: 14px;
   }
-}
-
-/* Section shell */
+}/* Section shell */
 .services {
   padding: 28px 16px 40px;
 }
+
+/* Two-column area */
 .services-inner {
   background: #2b0024; /* deep plum */
   border-radius: 24px;
@@ -1017,13 +1129,36 @@ function Home() {
   display: grid;
   grid-template-columns: 1.05fr 1.4fr;
   gap: 28px 32px;
+  align-items: start;   /* important for sticky inside grid */
+  /* DO NOT set overflow here; sticky needs a non-overflow ancestor */
 }
 
-/* Left column */
+/* Shared sticky behavior for both columns */
+.sticky-col {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: clamp(16px, 8vh, 96px); /* tweak for your fixed navbar height if any */
+  align-self: start;
+}
+
+/* Scroll box inside each column */
+.svc-scroll {
+  /* The scrollable “box” */
+  max-height: calc(100vh - clamp(16px, 8vh, 96px) - 40px); /* viewport minus sticky offset minus some padding */
+  overflow: auto;
+  overscroll-behavior: contain; /* keeps scroll confined and feels smooth */
+  padding-right: 6px;           /* small breathing room for scrollbar */
+}
+
+/* Left column base spacing */
 .svc-left {
   padding: 12px 8px 12px 4px;
 }
 
+/* Right column simply wraps the scroll area */
+.svc-right {}
+
+/* Eyebrow + title + CTA (left) */
 .svc-eyebrow {
   display: inline-block;
   font-size: 12px;
@@ -1090,57 +1225,47 @@ function Home() {
   background: linear-gradient(to bottom, #d0173e, #961782);
   flex: 0 0 54px;
 }
-.svc-icon svg {
-  font-size: 24px;
-  color: #fff;
-}
+.svc-icon svg { font-size: 24px; color: #fff; }
 
-/* text block */
-.svc-copy {
+.svc-name { margin: 0; font-size: 16px; font-weight: 800; color: #ffffff; }
+.svc-desc { margin: .25rem 0 0; font-size: 13.5px; line-height: 1.55; color: #e6cfe0; opacity: .9; }
+
+/* Scrollbar polish (optional) */
+.svc-scroll::-webkit-scrollbar { width: 8px; }
+.svc-scroll::-webkit-scrollbar-thumb {
+  background: #ffffff22;
+  border-radius: 8px;
 }
-.svc-num {
-  opacity: 0.9;
-  color: #f0dbe7;
-  font-weight: 700;
-  margin-bottom: 2px;
-}
-.svc-name {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 800;
-  color: #ffffff;
-}
-.svc-desc {
-  margin: 0.25rem 0 0;
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: #e6cfe0;
-  opacity: 0.9;
+.svc-scroll:hover::-webkit-scrollbar-thumb {
+  background: #ffffff44;
 }
 
 /* Responsive */
 @media (max-width: 1024px) {
   .services-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;  /* stack */
     gap: 28px;
+  }
+  .sticky-col {
+    position: static;    /* turn off sticky when stacked */
+  }
+  .svc-scroll {
+    max-height: none;
+    overflow: visible;   /* normal flow on small screens */
+    padding-right: 0;
   }
   .svc-grid {
     grid-template-columns: 1fr 1fr;
+    gap: 40px 24px;
   }
 }
+
 @media (max-width: 640px) {
-  .services-inner {
-    padding: 28px 20px;
-  }
-  .svc-grid {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-  .svc-icon {
-    width: 50px;
-    height: 50px;
-  }
+  .services-inner { padding: 28px 20px; }
+  .svc-grid { grid-template-columns: 1fr; gap: 22px; }
+  .svc-icon { width: 50px; height: 50px; }
 }
+
 
 /* Wrapper */
 .who {
@@ -1294,202 +1419,151 @@ function Home() {
   }
 }
 
-.exp-inner {
-  max-width: 1160px;
-  margin: 0 auto;
-  display: grid;
-  padding: 46px 16px;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 24px 40px;
-  grid-template-areas: "left right";
-
-  align-items: center;
+/* Two-column shell (kept) */
+.exp-inner{
+  max-width:1160px;
+  margin:0 auto;
+  display:grid;
+  padding:46px 16px;
+  grid-template-columns:1.2fr 1fr;
+  gap:24px 40px;
+  grid-template-areas:"left right";
+  align-items:center;
 }
+.feature-bub{ grid-area:left; }
+.exp-copy   { grid-area:right; }
 
-/* ===== Circle layout (desktop / default) ===== */
-.exp-cloud {
-  --n: 8;
-  --r: 140px;
-  --size: 360px;
-  position: relative;
-  width: var(--size);
-  display: grid;
-  place-items: center;
-}
-
-.exp-cloud {
-  grid-area: left;
+/* Cloud background like mock */
+.feature-bub{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;               /* vertical gap between rows */
 }
 
-.exp-copy {
-  grid-area: right;
-}
-.chip {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: center;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #fff;
-  border-radius: 999px;
-  padding: 10px 16px 10px 12px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-  white-space: nowrap;
-  cursor: default;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-  /* perfect circular placement: angle = i * 360 / n */
-  transform: rotate(calc(var(--i) * 360deg / var(--n))) translate(var(--r))
-    rotate(calc(-1 * var(--i) * 360deg / var(--n)));
+/* Rows */
+.bub-row{
+  width:100%;
+  max-width:720px;
+  display:flex;
+  justify-content:center;  /* center single-pill rows */
+  gap:12px;
 }
 
-.chip span {
-  font-weight: 600;
-  font-size: 14px;
-  color: #232323;
+/* Chip (pill) */
+.bub{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:#fff;
+  border-radius:9999px;
+  padding:12px 18px;
+  box-shadow:0 10px 26px rgba(0,0,0,.08);
+  white-space:nowrap;
+  transition:transform .2s ease, box-shadow .25s ease;
 }
-.chip img {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  object-fit: cover;
+.bub:hover,
+.bub:focus-visible{
+  transform:translateY(-2px);
+  box-shadow:0 14px 30px rgba(0,0,0,.12);
+}
+.bub:focus-visible{ outline:2px solid #00000014; outline-offset:2px; }
+
+/* Width presets to match the screenshot proportions */
+.bub-narrow { min-width:160px; max-width:190px; padding-left:16px; }
+.bub-mid    { min-width:145px; max-width:260px; padding-left:18px; }
+.bub-wide   { min-width:210px; max-width:360px; padding-left:22px; }
+.bub-semi   { min-width:185px; max-width:300px; padding-left:20px; }
+
+/* Label text */
+.bub-text{
+  font-weight:600;
+  font-size:16px;
+  color:#222;
+  line-height:1;
 }
 
-.chip:hover,
-.chip:focus-visible {
-  transform: rotate(calc(var(--i) * 360deg / var(--n))) translate(var(--r))
-    rotate(calc(-1 * var(--i) * 360deg / var(--n))) scale(1.05);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-}
-.chip:focus-visible {
-  outline: 2px solid rgba(208, 23, 62, 0.45);
-  outline-offset: 2px;
-}
-
-/* ===== Right copy ===== */
-.exp-copy {
-  color: #0e0e0e;
-}
-.exp-eyebrow {
-  display: inline-block;
-  font-size: 11px;
-  letter-spacing: 2px;
-  font-weight: 700;
-  color: #6f6f6f;
-  margin-bottom: 10px;
+/* Circular image that peeks out on the right */
+.bub-img{
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  box-shadow:0 6px 16px rgba(0,0,0,.12);
+  translate:6px 0; /* small overhang to the right */
 }
 
-.exp-title {
-  font-size: clamp(26px, 4.2vw, 38px);
-  line-height: 1.25;
-  margin: 2px 0 10px;
-  font-weight: 800;
-}
-.exp-title span {
-  background: linear-gradient(90deg, #d0173e, #961782);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-.exp-desc {
-  color: #6b6b6b;
-  line-height: 1.6;
-  font-size: 14px;
-  margin: 10px 0 18px;
-  max-width: 520px;
-}
-.exp-cta {
-  display: inline-block;
-  padding: 10px 16px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 700;
-  color: #fff;
-  background: linear-gradient(to bottom, #d0173e, #961782); /* brand gradient */
-  box-shadow: 0 10px 22px rgba(150, 23, 130, 0.25);
-  transition: transform 0.2s ease, box-shadow 0.25s ease;
-}
-.exp-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(208, 23, 62, 0.35);
-}
+/* Optional tiny size variety (like the mock) */
+.bub-row-split:nth-of-type(1) .bub:last-child .bub-img{ width:44px; height:44px; }
+.bub-row-split:nth-of-type(2) .bub:last-child .bub-img{ width:40px; height:40px; }
 
-/* ===== Responsiveness ===== */
-
-/* Large → single column (reversed order on small) */
-@media (max-width: 1024px) {
-  .exp-inner {
-    grid-template-columns: 1fr;
+/* Responsive: keep same composition, only scale sizes */
+@media (max-width:1024px){
+  .exp-inner{
+    grid-template-columns:1fr;
     grid-template-areas:
       "right"
-      "left"; /* 👈 reverses the stacking order */
-    gap: 26px;
-  }
-}
-@media (max-width: 820px) {
-  .exp-cloud {
-    --size: 300px;
-    --r: 115px;
-  }
-  .chip span {
-    font-size: 13px;
-  }
-  .chip img {
-    width: 34px;
-    height: 34px;
+      "left";
+    gap:26px;
   }
 }
 
-/* Mobile: switch to a 2×2 (auto rows) grid for chips */
-@media (max-width: 640px) {
-  .exp-cloud {
-    position: relative;
-    width: 100%;
-    height: auto;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-    --r: 0; /* stop circle math */
-    --size: auto;
-  }
-  .chip {
-    position: static; /* grid places them */
-    transform: none; /* remove circular transform */
-    justify-content: space-between;
-    padding: 10px 12px;
-  }
-  .chip img {
-    width: 32px;
-    height: 32px;
-  }
-  .chip span {
-    font-size: 13px;
-  }
+@media (max-width:820px){
+  .bub-row{ max-width:640px; gap:10px; }
+  .bub{ padding:10px 16px; }
+  .bub-text{ font-size:13.5px; }
+  .bub-img{ width:42px; height:42px; translate:4px 0; }
+  .bub-narrow { min-width:150px; max-width:180px; }
+  .bub-mid    { min-width:200px; max-width:240px; }
+  .bub-wide   { min-width:270px; max-width:330px; }
+  .bub-semi   { min-width:220px; max-width:280px; }
 }
 
-/* Very small devices: comfortable spacing */
-@media (max-width: 380px) {
-  .exp-cloud {
-    gap: 10px;
-  }
-  .chip {
-    padding: 8px 10px;
-  }
-  .chip span {
-    font-size: 12.5px;
-  }
+@media (max-width:560px){
+  .bub-row{ max-width:100%; gap:8px; }
+  .bub{ padding:9px 14px; }
+  .bub-text{ font-size:13px; }
+  .bub-img{ width:38px; height:38px; translate:3px 0; }
+  .bub-narrow { min-width:140px; max-width:170px; }
+  .bub-mid    { min-width:120px; max-width:230px; }
+  .bub-wide   { min-width:165px; max-width:310px; }
+  .bub-semi   { min-width:150px; max-width:260px; }
 }
 
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .chip,
-  .exp-cta {
-    transition: none;
-  }
+@media (max-width:380px){
+  .bub{ padding:8px 12px; }
+  .bub-text{ font-size:12.5px; }
+  .bub-img{ width:34px; height:34px; translate:2px 0; }
+  .bub-row{ gap:6px; }
 }
+
+/* Right column styles (unchanged) */
+.exp-copy{ color:#0e0e0e; }
+.exp-eyebrow{
+  display:inline-block; font-size:11px; letter-spacing:2px; font-weight:700;
+  color:#6f6f6f; margin-bottom:10px;
+}
+.exp-title{ font-size:clamp(26px,4.2vw,38px); line-height:1.25; margin:2px 0 10px; font-weight:800; }
+.exp-title span{
+  background:linear-gradient(90deg,#d0173e,#961782);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text; text-fill-color:transparent;
+}
+.exp-desc{ color:#6b6b6b; line-height:1.6; font-size:14px; margin:10px 0 18px; max-width:520px; }
+.exp-cta{
+  display:inline-block; padding:10px 16px; border-radius:999px; text-decoration:none;
+  font-weight:700; color:#fff; background:linear-gradient(to bottom,#d0173e,#961782);
+  box-shadow:0 10px 22px rgba(150,23,130,.25);
+  transition:transform .2s ease, box-shadow .25s ease;
+}
+.exp-cta:hover{ transform:translateY(-2px); box-shadow:0 14px 28px rgba(208,23,62,.35); }
+@media (prefers-reduced-motion:reduce){ .bub,.exp-cta{ transition:none; } }
+
+
+
+
 /* Shell */
 .why {
   padding: clamp(32px, 5vw, 64px) 16px;
@@ -1931,20 +2005,37 @@ function Home() {
   background-clip: text;
   text-fill-color: transparent;
 }
-
 /* Right block */
 .t-right {
   display: grid;
   gap: 14px;
   align-content: start;
+  position: relative;
 }
 
-/* Testimonial item layout */
+/* Smooth fade transition for testimonials */
 .t-item {
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 18px;
   align-items: center;
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.fade {
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Photo card */
