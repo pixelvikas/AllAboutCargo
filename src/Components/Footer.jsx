@@ -63,11 +63,7 @@ const Footer = () => {
           <h4>Courses</h4>
           <ol>
             <li>Freight Forwarding Training</li>
-            <li>Customs Clearance Training</li>
-            <li>Supply Chain &amp; Logistics Courses</li>
             <li>Dangerous Goods (HAZ) Handling</li>
-            <li>Industry Certification Prep</li>
-            <li>Placement Assistance</li>
           </ol>
           <a
             href="/courses"
@@ -112,7 +108,7 @@ const Footer = () => {
           <a href="/about">About Us</a>
           <a href="/courses">Courses</a>
           <a href="/team">Team</a>
-          <a href="/contact">Contact Us</a>
+          <a href="/contact">Contact</a>
           <a href="/register">Register</a>
         </nav>
 

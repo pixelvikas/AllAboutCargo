@@ -18,6 +18,7 @@ import exp7 from "../../assets/exp7.png";
 import exp8 from "../../assets/exp8.png";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FiPlus, FiMinus, FiPhoneCall } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 import { FiArrowUpRight } from "react-icons/fi";
 import {
@@ -211,6 +212,7 @@ function Home() {
 
   if (!testimonials.length) return null;
   const t = testimonials[index];
+  const navigate = useNavigate();
 
   return (
     <>
@@ -232,7 +234,9 @@ function Home() {
                 <br />
                 Behind Global Trade.
               </h1>
-              <button className="cta">Get Certified</button>
+              <button className="cta" onClick={() => navigate("/register")}>
+                Get Certified
+              </button>
             </div>
 
             <div className="divider" />
@@ -297,7 +301,7 @@ function Home() {
             </div>
           </div>
 
-          <a href="#learn" className="about-cta">
+          <a href="/about" className="about-cta">
             Learn More <FiArrowUpRight className="arrow-icon" />
           </a>
         </div>
@@ -314,8 +318,8 @@ function Home() {
               <h2 className="svc-title">
                 Comprehensive Logistics Training for <span>Career Growth</span>
               </h2>
-              <a href="#all-services" className="svc-cta">
-                View all services
+              <a href="/courses" className="svc-cta">
+                View all Courses
               </a>
 
               {/* If you have more left-side paragraphs, lists, etc., add here */}
@@ -388,7 +392,7 @@ function Home() {
               </div>
             </div>
 
-            <a href="#experts" className="who-cta">
+            <a href="/team" className="who-cta">
               Meet our experts
             </a>
           </div>
@@ -501,7 +505,7 @@ function Home() {
               Enhance your skills with expert-led courses that bridge the gap
               between education and employment.
             </p>
-            <a href="#contact" className="exp-cta">
+            <a href="/contact" className="exp-cta">
               Get in Touch
             </a>
           </div>
@@ -620,7 +624,7 @@ function Home() {
           </div>
 
           {/* full-width CTA */}
-          <a href="#join" className="t-cta">
+          <a href="/register" className="t-cta">
             Join thousands of successful students who have built rewarding
             careers in logistics.
           </a>
