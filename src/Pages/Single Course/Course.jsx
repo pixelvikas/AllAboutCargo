@@ -228,7 +228,7 @@ const Single = () => {
               </ul>
             </div>
 
-            <a href="#" className="ss__cta">
+            <a href="/register" className="ss__cta">
               {data.cta}
             </a>
           </div>

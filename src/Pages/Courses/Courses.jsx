@@ -80,7 +80,7 @@ const Services = () => {
               ties, we provide top-tier coaching and hands-on training.
             </p>
 
-            <a href="/experts" className="et__cta">
+            <a href="/team" className="et__cta">
               Meet our experts
             </a>
           </div>
