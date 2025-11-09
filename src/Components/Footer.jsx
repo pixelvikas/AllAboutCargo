@@ -59,17 +59,21 @@ const Footer = () => {
         </nav>
 
         {/* Services */}
-        <div className="mol-footer__services">
-          <h4>Services</h4>
+        <div className="mol-footer__courses">
+          <h4>Courses</h4>
           <ol>
             <li>Freight Forwarding Training</li>
             <li>Customs Clearance Training</li>
             <li>Supply Chain &amp; Logistics Courses</li>
-            <li>Dangerous Goods Handling</li>
+            <li>Dangerous Goods (HAZ) Handling</li>
             <li>Industry Certification Prep</li>
             <li>Placement Assistance</li>
           </ol>
-          <a href="#" className="mol-footer__explore">
+          <a
+            href="/courses"
+            className="mol-footer__explore"
+            aria-label="Explore all courses"
+          >
             Explore All
           </a>
         </div>
@@ -81,8 +85,10 @@ const Footer = () => {
           <div className="mol-footer__contactRow">
             <FaLocationDot className="mol-footer__icon" />
             <div>
-              <div>Namami Family,</div>
-              <div>Mumbai</div>
+              <div>
+                Powai plaza, office #304, 3rd floor, central avenue, hiranandani
+                business park, powai, mumbai -400076
+              </div>
             </div>
           </div>
 
@@ -93,7 +99,7 @@ const Footer = () => {
 
           <div className="mol-footer__contactRow">
             <FaRegEnvelope className="mol-footer__icon" />
-            <a href="mailto:info@mol.com">Info@mol.com</a>
+            <a href="mailto:info@mol.com">coach@allaboutcargo.in</a>
           </div>
         </div>
       </div>
@@ -105,7 +111,7 @@ const Footer = () => {
           <a href="/">Home</a>
           <a href="/about">About Us</a>
           <a href="/courses">Courses</a>
-          <a href="/team">Our Team</a>
+          <a href="/team">Team</a>
           <a href="/contact">Contact Us</a>
           <a href="/register">Register</a>
         </nav>

@@ -115,17 +115,19 @@ const Contact = () => {
                   <span className="ct__chipIcon ct__chipIcon--pin">
                     <FiMapPin />
                   </span>
-                  Mumbai, India
+                  powai plaza, office #304, 3rd floor, <br /> central avenue,
+                  hiranandani business park, powai, mumbai -400076
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <div className="map-container">
         <iframe
           title="Our Location"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3131.9994078278883!2d72.8667327!3d19.0997093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c84449930093%3A0x44760442773a5fce!2sAero%20View%20Society%2C%202%2C%20Church%20Pakhadi%20Rd%2C%20Sahar%20Village%2C%20Andheri%20East%2C%20Mumbai%2C%20Maharashtra%20400099!5e1!3m2!1sen!2sin!4v1746712041015!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.4700191195693!2d72.90816747961883!3d19.123545035913303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7e60c35a127%3A0x2637fcdb4b53fcbb!2sPowai%20Plaza!5e1!3m2!1sen!2sin!4v1762695813057!5m2!1sen!2sin"
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
