@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <footer className="mol-footer" role="contentinfo">
       <div className="mol-footer__inner">
-        {/* Left: Headline + tagline + socials */}
+        {/* Brand / tagline / socials */}
         <div className="mol-footer__brand">
           <h2 className="mol-footer__title">Learn. Build. Ship. Succeed.</h2>
           <p className="mol-footer__tag">
@@ -33,7 +33,32 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Middle: Services */}
+        {/* NEW: Quick Links */}
+        <nav className="mol-footer__quick" aria-label="Quick links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="/about">About Us</a>
+            </li>
+            <li>
+              <a href="/services">Services</a>
+            </li>
+            <li>
+              <a href="/team">Team</a>
+            </li>
+            <li>
+              <a href="/contact">Contact</a>
+            </li>
+            <li>
+              <a href="/register">Register</a>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Services */}
         <div className="mol-footer__services">
           <h4>Services</h4>
           <ol>
@@ -49,7 +74,7 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* Right: Say Hello */}
+        {/* Contact */}
         <div className="mol-footer__contact">
           <h4>Say Hello</h4>
 
@@ -76,12 +101,13 @@ const Footer = () => {
       <hr className="mol-footer__rule" />
 
       <div className="mol-footer__bottom">
-        <nav className="mol-footer__links">
-          <a href="#">Home</a>
-          <a href="#">About Us</a>
-          <a href="#">Services</a>
-          <a href="#">Our Team</a>
-          <a href="#">Contact Us</a>
+        <nav className="mol-footer__links" aria-label="Footer links">
+          <a href="/">Home</a>
+          <a href="/about">About Us</a>
+          <a href="/services">Services</a>
+          <a href="/team">Our Team</a>
+          <a href="/contact">Contact Us</a>
+          <a href="/register">Register</a>
         </nav>
 
         <div className="mol-footer__cpy">
@@ -90,9 +116,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <style>
-        {`
-        
+      <style>{`
 /* Base colors */
 :root {
   --bg: #3a0834;
@@ -102,44 +126,24 @@ const Footer = () => {
   --rule: rgba(255, 255, 255, 0.25);
 }
 
-/* ====== LAYOUT FIX: make page flex so footer floats ====== */
-html,
-body,
-#root {
-  height: 100%;
-}
+/* Layout helper so footer sits at bottom */
+html, body, #root { height: 100%; }
+#root { display: flex; flex-direction: column; }
+.site-main { flex: 1; min-height: 0; }
+body { padding-bottom: 24px; }
 
-#root {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Put this class on your main content wrapper (see note below) */
-.site-main {
-  flex: 1; /* pushes footer down */
-  min-height: 0; /* avoid overflow surprises */
-}
-
-/* Optional extra breathing room below everything */
-body {
-  padding-bottom: 24px; /* ensures footer never kisses the viewport edge */
-}
-
-/* ====== Footer styles ====== */
 .mol-footer {
   background: var(--bg);
   color: var(--text);
   border-radius: 22px;
   padding: 28px 28px 18px;
-
-  /* spacing around the card-like footer */
   margin: 16px;
-  margin-bottom: 32px; /* visible gap from bottom */
+  margin-bottom: 32px;
 }
 
 .mol-footer__inner {
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr 1fr 1fr; /* Brand, Quick, Services, Contact */
   gap: 36px;
   align-items: start;
 }
@@ -150,141 +154,67 @@ body {
   letter-spacing: 0.2px;
   font-weight: 700;
 }
+.mol-footer__tag { margin: 0 0 18px; color: var(--muted); line-height: 1.5; font-size: 15px; }
 
-.mol-footer__tag {
-  margin: 0 0 18px;
-  color: var(--muted);
-  line-height: 1.5;
-  font-size: 15px;
-}
-
-.mol-footer__socials {
-  display: flex;
-  gap: 16px;
-  margin-top: 6px;
-}
-
+.mol-footer__socials { display: flex; gap: 16px; margin-top: 6px; }
 .mol-footer__socials a {
-  display: inline-grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  display: inline-grid; place-items: center;
+  width: 28px; height: 28px; border-radius: 6px;
+  color: var(--text); text-decoration: none;
+  transition: transform .15s ease, opacity .15s ease;
+}
+.mol-footer__socials a:hover { transform: translateY(-2px); opacity: .9; }
+
+/* Quick links */
+.mol-footer__quick h4,
+.mol-footer__services h4,
+.mol-footer__contact h4 { margin: 0 0 10px; font-size: 18px; }
+
+.mol-footer__quick ul {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; gap: 10px;
+}
+.mol-footer__quick a {
   color: var(--text);
   text-decoration: none;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  font-size: 14px;
+  opacity: .95;
 }
-
-.mol-footer__socials a:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-.mol-footer__services h4,
-.mol-footer__contact h4 {
-  margin: 0 0 10px;
-  font-size: 18px;
-}
+.mol-footer__quick a:hover { text-decoration: underline; }
 
 .mol-footer__services ol {
-  margin: 0 0 8px 18px;
-  padding: 0;
-  color: var(--text);
-  line-height: 1.8;
-  font-size: 14px;
+  margin: 0 0 8px 18px; padding: 0; color: var(--text);
+  line-height: 1.8; font-size: 14px;
 }
+.mol-footer__explore { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--accent); text-decoration: none; }
+.mol-footer__explore:hover { text-decoration: underline; }
 
-.mol-footer__explore {
-  display: inline-block;
-  margin-top: 6px;
-  font-size: 12.5px;
-  color: var(--accent);
-  text-decoration: none;
-}
+.mol-footer__contactRow { display: flex; align-items: start; gap: 10px; margin: 10px 0; font-size: 14px; }
+.mol-footer__icon { flex: 0 0 18px; font-size: 18px; margin-top: 2px; opacity: .9; }
+.mol-footer__contact a { color: var(--text); text-decoration: none; }
+.mol-footer__contact a:hover { text-decoration: underline; }
 
-.mol-footer__explore:hover {
-  text-decoration: underline;
-}
+.mol-footer__rule { border: none; border-top: 1px solid var(--rule); margin: 18px 0 14px; }
 
-.mol-footer__contactRow {
-  display: flex;
-  align-items: start;
-  gap: 10px;
-  margin: 10px 0;
-  font-size: 14px;
-}
+.mol-footer__bottom { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.mol-footer__links { display: flex; gap: 26px; flex-wrap: wrap; }
+.mol-footer__links a { color: var(--text); opacity: .9; text-decoration: none; font-size: 14px; }
+.mol-footer__links a:hover { text-decoration: underline; }
 
-.mol-footer__icon {
-  flex: 0 0 18px;
-  font-size: 18px;
-  margin-top: 2px;
-  opacity: 0.9;
-}
+.mol-footer__cpy { display: flex; gap: 14px; font-size: 12.5px; color: var(--muted); }
 
-.mol-footer__contact a {
-  color: var(--text);
-  text-decoration: none;
+/* Responsive */
+@media (max-width: 1080px) {
+  .mol-footer__inner { grid-template-columns: 1fr 1fr 1fr; }
+  .mol-footer__brand { grid-column: 1 / -1; }
 }
-
-.mol-footer__contact a:hover {
-  text-decoration: underline;
+@media (max-width: 760px) {
+  .mol-footer__inner { grid-template-columns: 1fr; gap: 24px; }
 }
-
-.mol-footer__rule {
-  border: none;
-  border-top: 1px solid var(--rule);
-  margin: 18px 0 14px;
+@media (max-width: 520px) {
+  .mol-footer { padding: 22px 18px 16px; border-radius: 18px; }
 }
-
-.mol-footer__bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.mol-footer__links {
-  display: flex;
-  gap: 26px;
-  flex-wrap: wrap;
-}
-
-.mol-footer__links a {
-  color: var(--text);
-  opacity: 0.9;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.mol-footer__links a:hover {
-  text-decoration: underline;
-}
-
-.mol-footer__cpy {
-  display: flex;
-  gap: 14px;
-  font-size: 12.5px;
-  color: var(--muted);
-}
-
-/* Responsiveness */
-@media (max-width: 980px) {
-  .mol-footer__inner {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 720px) {
-  .mol-footer__inner {
-    grid-template-columns: 1fr;
-  }
-  .mol-footer__brand {
-    order: -1;
-  }
-}
-`}
-      </style>
+      `}</style>
     </footer>
   );
 };
