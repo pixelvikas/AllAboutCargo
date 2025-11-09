@@ -19,12 +19,12 @@ const About = () => {
 
   const DATA = [
     {
-      q: "Who can enroll in your courses?",
-      a: "Anyone interested in logistics, freight forwarding, or global trade—students, freshers, working professionals, and entrepreneurs.",
+      q: "Who can enrol in this course?",
+      a: "Anyone looking to start or advance their career in logistics, freight forwarding, or hazardous goods handling.",
     },
     {
       q: "Are your certifications recognized?",
-      a: "Yes, we offer IATA, FIATA, and industry-recognized certifications to boost your career prospects.",
+      a: "Yes, our certifications are industry-validated and trusted by logistics companies globally.",
     },
     {
       q: "Do you offer job placement assistance?",
@@ -32,11 +32,11 @@ const About = () => {
     },
     {
       q: "How long are the courses?",
-      a: "Programs range from short bootcamps (2–4 weeks) to comprehensive masterclasses (8–12 weeks).",
+      a: "Each course is designed to be completed in just 8 weeks.",
     },
     {
-      q: "Do you offer online training?",
-      a: "We offer online, hybrid, and in-person options to suit your schedule.",
+      q: "Is this an online or offline training?",
+      a: "All our courses are conducted 100% online, with live sessions and LMS-based learning support.",
     },
   ];
   return (
@@ -167,23 +167,18 @@ const About = () => {
           {/* Right stats (2x2) */}
           <div className="coach__stats">
             <div className="coach__stat">
-              <div className="coach__value">100%</div>
-              <div className="coach__label">Certification</div>
+              <div className="coach__value">2</div>
+              <div className="coach__label">Industry-Focused Courses</div>
             </div>
 
             <div className="coach__stat">
-              <div className="coach__value">20+</div>
-              <div className="coach__label">Hiring Partners</div>
+              <div className="coach__value">4</div>
+              <div className="coach__label">Learners Already Onboard</div>
             </div>
 
             <div className="coach__stat">
-              <div className="coach__value">95%</div>
-              <div className="coach__label">Placement Rate</div>
-            </div>
-
-            <div className="coach__stat">
-              <div className="coach__value">20+</div>
-              <div className="coach__label">Courses</div>
+              <div className="coach__value">10%</div>
+              <div className="coach__label">Job Placement Target</div>
             </div>
           </div>
         </div>
