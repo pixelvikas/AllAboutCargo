@@ -115,7 +115,7 @@ const Contact = () => {
                   <span className="ct__chipIcon ct__chipIcon--pin">
                     <FiMapPin />
                   </span>
-                  powai plaza, office #304, 3rd floor, <br /> central avenue,
+                  Powai Plaza, office #304, 3rd floor, <br /> central avenue,
                   hiranandani business park, powai, mumbai -400076
                 </div>
               </div>

@@ -8,6 +8,9 @@ import Footer from "./Components/Footer";
 // Utility
 import ScrollToTop from "./Components/ScrollToTop";
 
+// Loader
+import Loading from "./Components/Loading";
+
 // Lazy-loaded Pages
 const Home = lazy(() => import("./Pages/Home/Home"));
 const About = lazy(() => import("./Pages/About/About"));
@@ -15,6 +18,14 @@ const Courses = lazy(() => import("./Pages/Courses/Courses"));
 const SingleCourse = lazy(() => import("./Pages/Single Course/Course"));
 const Team = lazy(() => import("./Pages/Team/Team"));
 const Contact = lazy(() => import("./Pages/Contact/Contact"));
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+const TermsCondition = lazy(() =>
+  import("./Pages/TermsCondition/TermsCondition")
+);
+const RefundCancellation = lazy(() =>
+  import("./Pages/RefundCancellation/RefundCancellation")
+);
+const Feedback = lazy(() => import("./Pages/Feedback/Feedback"));
 
 function App() {
   return (
@@ -24,7 +35,7 @@ function App() {
       {/* Flex column page shell */}
       <div className="app-shell">
         {/* Suspense fallback while lazy components load */}
-        <Suspense fallback={<div className="page-loading">Loading...</div>}>
+        <Suspense fallback={<Loading />}>
           {/* Main expands to push footer down */}
           <main className="site-main">
             <Routes>
@@ -34,6 +45,13 @@ function App() {
               <Route path="/courses/:id" element={<SingleCourse />} />
               <Route path="/team" element={<Team />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-condition" element={<TermsCondition />} />
+              <Route
+                path="/refund-cancellation-policy"
+                element={<RefundCancellation />}
+              />
+              <Route path="/feedback-form" element={<Feedback />} />
               <Route path="*" element={<div>Page Not Found</div>} />
             </Routes>
           </main>
