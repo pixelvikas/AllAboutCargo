@@ -68,8 +68,8 @@ const PrivacyPolicy = () => {
             </div>
 
             <div className="privacy-cta">
-              <a className="btn-outline" href="mailto:privacy@cargo.example">
-                Contact privacy team
+              <a className="btn-outline" href="/contact">
+                Contact
               </a>
             </div>
           </div>
