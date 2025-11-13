@@ -572,13 +572,13 @@ function Home() {
       </section>
       <section className="marquee">
         <div className="marquee-inner">
-          <span data-text="ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ">
-            ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT
-            CARGO *
+          <span data-text="ALL ABOUT CARGO * BUILDING BRAINS BEHIND GLOBAL TRADE * ALL ABOUT CARGO * BUILDING BRAINS BEHIND GLOBAL TRADE * ">
+            ALL ABOUT CARGO * BUILDING BRAINS BEHIND GLOBAL TRADE * ALL ABOUT
+            CARGO * BUILDING BRAINS BEHIND GLOBAL TRADE *
           </span>
-          <span data-text="ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ">
-            ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT CARGO * ALL ABOUT
-            CARGO *
+          <span data-text="ALL ABOUT CARGO * BUILDING BRAINS BEHIND GLOBAL TRADE * ALL ABOUT CARGO * BUILDING BRAINS BEHIND GLOBAL TRADE * ">
+            ALL ABOUT CARGO * BUILDING BRAINS BEHIND GLOBAL TRADE * ALL ABOUT
+            CARGO * BUILDING BRAINS BEHIND GLOBAL TRADE *
           </span>
         </div>
       </section>
