@@ -6,10 +6,12 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
 // Utility
-import ScrollToTop from "./Components/ScrollToTop";
+import AutoScroll from "./Components/AutoScroll";
+import WhatsAppButton from "./Components/WhatsappButton";
 
 // Loader
 import Loading from "./Components/Loading";
+import ScrollToTop from "./Components/ScrollToTop";
 
 // Lazy-loaded Pages
 const Home = lazy(() => import("./Pages/Home/Home"));
@@ -30,7 +32,9 @@ const Feedback = lazy(() => import("./Pages/Feedback/Feedback"));
 function App() {
   return (
     <Router>
+      <AutoScroll />
       <ScrollToTop />
+      <WhatsAppButton phoneNumber="9324389141" />
 
       {/* Flex column page shell */}
       <div className="app-shell">
