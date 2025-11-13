@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import {
   FaInstagram,
   FaFacebookF,
@@ -104,12 +106,16 @@ const Footer = () => {
 
       <div className="mol-footer__bottom">
         <nav className="mol-footer__links" aria-label="Footer links">
-          <a href="/">Home</a>
-          <a href="/about">About Us</a>
-          <a href="/courses">Courses</a>
-          <a href="/team">Team</a>
-          <a href="/contact">Contact</a>
-          <a href="/register">Register</a>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/courses">Courses</Link>
+          <Link to="/team">Team</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/register">Register</Link>
+          <Link to="/privacy-policy">Privacy</Link>
+          <Link to="/terms-condition">Terms</Link>
+          <Link to="/refund-cancellation-policy">Refunds</Link>
+          <Link to="/feedback-form">Feedback</Link>
         </nav>
 
         <div className="mol-footer__cpy">
@@ -215,6 +221,79 @@ body { padding-bottom: 24px; }
 }
 @media (max-width: 520px) {
   .mol-footer { padding: 22px 18px 16px; border-radius: 18px; }
+}
+
+
+.mol-footer__courses {
+  /* keep spacing consistent with other footer blocks */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mol-footer__courses h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  color: inherit;
+}
+
+/* remove default numbering/indent and align the list */
+.mol-footer__courses ol,
+.mol-footer__courses ul {
+  list-style: none;        /* remove numbers */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                /* vertical spacing between items */
+}
+
+/* each list item: small custom bullet + aligned text */
+.mol-footer__courses li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted, #caa6c6); /* uses existing var if available, fallback provided */
+  font-size: 14px;
+  line-height: 1.5;
+  margin-left: 0;          /* ensure perfectly left-aligned under the heading */
+}
+
+/* custom bullet using a pseudo-element for a refined look */
+.mol-footer__courses li::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  /* subtle gradient dot matching the brand accent */
+  background: linear-gradient(180deg, rgba(208,23,62,1), rgba(150,23,130,1));
+  flex: 0 0 8px;
+  transform: translateY(0.5px);
+  box-shadow: 0 2px 6px rgba(16, 24, 40, 0.12);
+}
+
+/* make the Explore All link stand out and consistent */
+.mol-footer__courses .mol-footer__explore {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--accent, #ff48b5);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.mol-footer__courses .mol-footer__explore:hover {
+  text-decoration: underline;
+  opacity: 0.95;
+}
+
+/* Responsive tweak: ensure good spacing on small screens */
+@media (max-width: 520px) {
+  .mol-footer__courses { gap: 8px; }
+  .mol-footer__courses li { font-size: 13.5px; gap: 8px; }
+  .mol-footer__courses li::before { width: 7px; height: 7px; }
 }
       `}</style>
     </footer>

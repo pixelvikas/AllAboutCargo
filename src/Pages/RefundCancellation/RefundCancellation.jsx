@@ -66,11 +66,8 @@ const RefundCancellation = () => {
             </div>
 
             <div className="refund-actions">
-              <a className="btn-outline" href="/terms-condition">
-                Terms
-              </a>
-              <a className="btn" href="mailto:support@allaboutcargo.in">
-                Contact Support
+              <a className="btn" href="/contact">
+                Contact
               </a>
             </div>
           </header>

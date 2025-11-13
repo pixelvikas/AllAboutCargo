@@ -18,7 +18,7 @@ const Courses = lazy(() => import("./Pages/Courses/Courses"));
 const SingleCourse = lazy(() => import("./Pages/Single Course/Course"));
 const Team = lazy(() => import("./Pages/Team/Team"));
 const Contact = lazy(() => import("./Pages/Contact/Contact"));
-import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+const PrivacyPolicy = lazy(() => import("./Pages/PrivacyPolicy/PrivacyPolicy"));
 const TermsCondition = lazy(() =>
   import("./Pages/TermsCondition/TermsCondition")
 );

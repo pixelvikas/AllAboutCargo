@@ -62,7 +62,7 @@ const PrivacyPolicy = () => {
             </div>
 
             <div className="privacy-cta">
-              <a className="btn-outline" href="/contact">
+              <a className="btn" href="/contact">
                 Contact
               </a>
             </div>
