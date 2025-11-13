@@ -35,11 +35,6 @@ const PrivacyPolicy = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [active]);
 
-  const handleTocClick = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <>
       <Hero
@@ -56,10 +51,9 @@ const PrivacyPolicy = () => {
         <div className="ct__wrap privacy-wrap">
           <div className="privacy-header">
             <div>
-              <span className="ct__eyebrow">LEGAL</span>
               <h1 id="privacy-title" className="ct__title privacy-title">
                 Our commitment to your privacy
-                <span className="ct__highlight"> — Cargo</span>
+                <span className="ct__highlight"> — All About Cargo</span>
               </h1>
               <p className="privacy-lead">
                 We value your trust. This policy explains what we collect, why,
@@ -86,7 +80,7 @@ const PrivacyPolicy = () => {
                   We respect your privacy. This Privacy Policy explains what
                   information we collect, how we use it, with whom we share it,
                   and your rights regarding your personal information when you
-                  use Cartgo.
+                  use All About Cargo.
                 </p>
               </section>
 

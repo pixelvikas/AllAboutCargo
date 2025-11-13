@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import bgImage from "../../assets/pageherobg.png";
-import "./style.css";
 import Hero from "../../Components/Hero";
 
 const TOC = [
@@ -34,11 +33,6 @@ const TermsCondition = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [active]);
 
-  const scrollTo = (id) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <>
       <Hero
@@ -51,14 +45,13 @@ const TermsCondition = () => {
         <div className="ct__wrap terms-wrap">
           <header className="terms-header">
             <div>
-              <span className="ct__eyebrow">LEGAL</span>
               <h1 id="terms-title" className="ct__title terms-title">
                 Terms &amp; Conditions
-                <span className="ct__highlight"> — Cartgo</span>
+                <span className="ct__highlight"> — All About Cargo</span>
               </h1>
               <p className="terms-lead">
                 Please read these Terms &amp; Conditions ("Terms") carefully
-                before using the Cartgo website or services. By using our
+                before using the All About Cargo website or services. By using our
                 services, you agree to be bound by these Terms.
               </p>
             </div>
@@ -79,7 +72,7 @@ const TermsCondition = () => {
               >
                 <h3 className="ct__cardTitle">Introduction</h3>
                 <p className="ct__muted">
-                  These Terms govern your access to and use of Cartgo’s website,
+                  These Terms govern your access to and use of All About Cargo's website,
                   products and services. If you do not agree with these Terms,
                   please do not use our services.
                 </p>
@@ -137,7 +130,7 @@ const TermsCondition = () => {
               >
                 <h3 className="ct__cardTitle">User Content</h3>
                 <p className="ct__muted">
-                  By submitting content to Cartgo you grant us a license to use
+                  By submitting content to All About Cargo you grant us a license to use
                   it to provide and promote the service. You represent that you
                   have the right to submit that content and it does not violate
                   any law or third-party rights.
@@ -150,7 +143,7 @@ const TermsCondition = () => {
               >
                 <h3 className="ct__cardTitle">Limitation of Liability</h3>
                 <p className="ct__muted">
-                  To the maximum extent permitted by law, Cartgo and its
+                  To the maximum extent permitted by law, All About Cargo and its
                   affiliates will not be liable for any indirect, incidental,
                   special or consequential damages arising out of your use of
                   the services.
@@ -173,7 +166,7 @@ const TermsCondition = () => {
                 <h3 className="ct__cardTitle">Governing Law</h3>
                 <p className="ct__muted">
                   These Terms are governed by the laws of the jurisdiction where
-                  Cartgo operates. Disputes will be resolved in the appropriate
+                  All About Cargo operates. Disputes will be resolved in the appropriate
                   courts of that jurisdiction.
                 </p>
               </section>
