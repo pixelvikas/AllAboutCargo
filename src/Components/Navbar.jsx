@@ -41,7 +41,7 @@ const Navbar = () => {
           <a href="/contact">Contact</a>
         </nav>
 
-        <a href="/register" className="contact-btn">
+        <a href="https://course.allaboutcargo.in/" className="contact-btn">
           Register
         </a>
 
@@ -78,7 +78,11 @@ const Navbar = () => {
           Contact
         </a>
 
-        <a href="/register" className="mobile-register" onClick={closeMenu}>
+        <a
+          href="https://course.allaboutcargo.in/"
+          className="mobile-register"
+          onClick={closeMenu}
+        >
           Register
         </a>
       </div>

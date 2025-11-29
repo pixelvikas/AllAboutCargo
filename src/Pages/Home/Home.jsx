@@ -137,25 +137,21 @@ const STEPS = [
 
 const testimonials = [
   {
-    img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800&q=80&auto=format&fit=crop",
     quote:
       "As a fresher, this was very helpful in understanding the basics of freight forwarding and logistics.",
     name: "Sumit",
   },
   {
-    img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80&auto=format&fit=crop",
     quote:
       "A very informative and practical course, it helped me understand real-time freight forwarding processes and documentation. Perfect for professionals in logistics and supply chain management.",
     name: "Snehit",
   },
   {
-    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80&auto=format&fit=crop",
     quote:
       "Someone new to logistics, this course on Freight Forwarding and Air Cargo Logistics has been a great learning experience. Our instructor teaches in a very organic and detailed way, helping me understand everything from the legal side of shipments to the history and future of the industry. Every class gives me deeper insight and motivation to build a career in logistics.",
     name: "Omkar",
   },
   {
-    img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&q=80&auto=format&fit=crop",
     quote:
       "Coming from a non-logistics background, the course really helped me understand the knitty-gritty of freight forwarding and everything that is required to facilitate a global trade.",
     name: "Anu",
@@ -234,7 +230,12 @@ function Home() {
                 <br />
                 Behind Global Trade.
               </h1>
-              <button className="cta" onClick={() => navigate("/register")}>
+              <button
+                className="cta"
+                onClick={() =>
+                  (window.location.href = "https://course.allaboutcargo.in/")
+                }
+              >
                 Get Certified
               </button>
             </div>
@@ -603,10 +604,6 @@ function Home() {
             onMouseLeave={() => setIsPaused(false)}
           >
             <div className="t-item fade">
-              <div className="t-photo">
-                <img src={t.img} alt={`${t.name} testimonial`} />
-              </div>
-
               <div className="t-quote">
                 <p className="t-text">"{t.quote}"</p>
                 <p className="t-name">— {t.name}</p>
@@ -624,7 +621,12 @@ function Home() {
           </div>
 
           {/* full-width CTA */}
-          <a href="/register" className="t-cta">
+          <a
+            onClick={() =>
+              (window.location.href = "https://course.allaboutcargo.in/")
+            }
+            className="t-cta"
+          >
             Join thousands of successful students who have built rewarding
             careers in logistics.
           </a>

@@ -2,9 +2,35 @@ import React from "react";
 import bgImage from "../../assets/pageherobg.png";
 import "./style.css";
 import Hero from "../../Components/Hero";
+import { useState } from "react";
 import { FiPhone, FiMail, FiMapPin, FiSend } from "react-icons/fi";
 
 const Contact = () => {
+  const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false);
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true);
+    setResult("Sending...");
+
+    const formData = new FormData(event.target);
+    formData.append("access_key", "ba521758-99c9-4b4b-bbfd-15b09b531ad7");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      setResult("Your message has been sent successfully 🎉");
+      event.target.reset();
+    } else {
+      setResult("Something went wrong. Please try again!");
+    }
+
+    setLoading(false);
+  };
   return (
     <>
       <Hero title="Contact" crumbCurrent="CONTACT" bgImage={bgImage} />
@@ -28,17 +54,21 @@ const Contact = () => {
             <div className="ct__card">
               <h3 className="ct__cardTitle">Send A Message</h3>
 
-              <form className="ct__form" onSubmit={(e) => e.preventDefault()}>
+              <form className="ct__form" onSubmit={onSubmit}>
                 <div className="ct__row">
                   <input
                     className="ct__input"
                     type="text"
+                    name="first_name"
                     placeholder="First Name"
+                    required
                   />
                   <input
                     className="ct__input"
                     type="text"
+                    name="last_name"
                     placeholder="Last Name"
+                    required
                   />
                 </div>
 
@@ -46,26 +76,34 @@ const Contact = () => {
                   <input
                     className="ct__input"
                     type="email"
+                    name="email"
                     placeholder="Email Address"
+                    required
                   />
                   <input
                     className="ct__input"
                     type="tel"
+                    name="phone"
                     placeholder="Phone Number"
+                    required
                   />
                 </div>
 
                 <div className="ct__row ct__row--full">
                   <textarea
                     className="ct__textarea"
+                    name="message"
                     rows="4"
                     placeholder="Message"
-                  />
+                    required
+                  ></textarea>
                 </div>
 
-                <button className="ct__submit" type="submit">
-                  Send Message <FiSend />
+                <button className="ct__submit" type="submit" disabled={loading}>
+                  {loading ? "Sending..." : "Send Message"} <FiSend />
                 </button>
+
+                {result && <p className="ct__result">{result}</p>}
               </form>
             </div>
 

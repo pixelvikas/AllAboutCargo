@@ -5,12 +5,11 @@ import Hero from "../../Components/Hero";
 
 const SECTIONS = [
   { id: "overview", title: "Overview" },
-  { id: "eligibility", title: "Eligibility" },
-  { id: "process", title: "Refund Process" },
-  { id: "timeline", title: "Timeline" },
-  { id: "nonrefundable", title: "Non-refundable Items" },
-  { id: "cancellation", title: "Cancellation Policy" },
-  { id: "contact", title: "Contact" },
+  { id: "course-fee", title: "1. Course Fee" },
+  { id: "no-refund", title: "2. No Refund Policy" },
+  { id: "exceptional", title: "3. Exceptional Refund Cases" },
+  { id: "transfer", title: "4. Course / Batch Transfer" },
+  { id: "contact", title: "5. Contact for Refund Queries" },
 ];
 
 const RefundCancellation = () => {
@@ -41,8 +40,8 @@ const RefundCancellation = () => {
   return (
     <>
       <Hero
-        title="Refund & Cancellation Policy"
-        crumbCurrent="REFUND & CANCELLATION POLICY"
+        title="Refund Policy"
+        crumbCurrent="REFUND POLICY"
         bgImage={bgImage}
       />
 
@@ -55,13 +54,17 @@ const RefundCancellation = () => {
           <header className="refund-header">
             <div>
               <h1 id="refund-title" className="ct__title refund-title">
-                Refund &amp; Cancellation Policy
-                <span className="ct__highlight"> — All About Cargo</span>
+                Refund Policy
+                <span className="ct__highlight"> — AllAboutCargo</span>
               </h1>
               <p className="refund-lead">
-                We want you to be satisfied. This page explains our refund
-                eligibility, timelines, and the process to request a refund or
-                cancel an order.
+                This Refund Policy explains the fee structure, strict no-refund
+                terms, exceptional refund scenarios, and how to contact us for
+                refund-related queries for the AllAboutCargo 8-week online
+                logistics program.
+              </p>
+              <p className="refund-lead" style={{ fontSize: "13px" }}>
+                <strong>Effective Date:</strong> 19/11/2025
               </p>
             </div>
 
@@ -81,133 +84,125 @@ const RefundCancellation = () => {
               >
                 <h3 className="ct__cardTitle">Overview</h3>
                 <p className="ct__muted">
-                  allaboutcargo strives to provide high-quality courses and
-                  services. If you are not satisfied with a purchase, this
-                  policy explains when refunds are possible and how
-                  cancellations are handled.
+                  The AllAboutCargo 8-week online logistics course is a
+                  digital-first program that provides immediate access to course
+                  content, downloadable resources, and exam eligibility upon
+                  successful payment. Due to the nature of digital education
+                  products, AllAboutCargo follows a{" "}
+                  <strong>strict No Refund Policy</strong>, with only a few
+                  clearly defined exceptional cases.
                 </p>
               </section>
 
               <section
-                id="eligibility"
+                id="course-fee"
                 className="ct__card ct__card--spaced refund-section"
               >
-                <h3 className="ct__cardTitle">Eligibility</h3>
+                <h3 className="ct__cardTitle">1. Course Fee</h3>
                 <p className="ct__muted">
-                  Refund eligibility depends on the product type and the timing
-                  of the request. Typical cases:
+                  The course fee for the{" "}
+                  <strong>AllAboutCargo 8-week online program</strong> is{" "}
+                  <strong>₹25,000</strong> (inclusive of applicable taxes),
+                  unless otherwise explicitly stated in an official offer or
+                  communication.
+                </p>
+              </section>
+
+              <section
+                id="no-refund"
+                className="ct__card ct__card--spaced refund-section"
+              >
+                <h3 className="ct__cardTitle">2. No Refund Policy</h3>
+                <p className="ct__muted">
+                  Because the course includes immediate digital access,
+                  downloadable materials, intellectual content, and exam
+                  eligibility, AllAboutCargo follows a{" "}
+                  <strong>strict NO REFUND policy after purchase</strong>, under
+                  any circumstances, including (but not limited to):
+                </p>
+                <ul className="refund-list">
+                  <li>Change of mind</li>
+                  <li>Lack of time or schedule constraints</li>
+                  <li>Personal or health-related issues</li>
+                  <li>Technical difficulties on the user&apos;s end</li>
+                  <li>Failure to complete or pass the course and/or exam</li>
+                </ul>
+                <p className="ct__muted" style={{ marginTop: "10px" }}>
+                  By completing the payment, you acknowledge and accept that
+                  fees are non-refundable in all such scenarios.
+                </p>
+              </section>
+
+              <section
+                id="exceptional"
+                className="ct__card ct__card--spaced refund-section"
+              >
+                <h3 className="ct__cardTitle">
+                  3. Exceptional Refund Cases (If Any)
+                </h3>
+                <p className="ct__muted">
+                  Refunds may be considered <strong>only</strong> in the
+                  following exceptional scenarios:
+                </p>
+                <ul className="refund-list">
+                  <li>Duplicate payment due to a technical error</li>
+                  <li>
+                    Payment was made, but access to the course was{" "}
+                    <strong>never granted</strong>
+                  </li>
+                  <li>
+                    Verified system failure on our side that prevents course
+                    access or usage
+                  </li>
+                </ul>
+                <p className="ct__muted" style={{ marginTop: "10px" }}>
+                  All exceptional refunds (if approved) will be processed within{" "}
+                  <strong>7–14 working days</strong> via the{" "}
+                  <strong>same payment method</strong> used for the original
+                  transaction.
+                </p>
+              </section>
+
+              <section
+                id="transfer"
+                className="ct__card ct__card--spaced refund-section"
+              >
+                <h3 className="ct__cardTitle">
+                  4. Course Transfer / Batch Transfer
+                </h3>
+                <p className="ct__muted">
+                  Course or batch transfers are <strong>not guaranteed</strong>{" "}
+                  and may be allowed only under specific circumstances:
                 </p>
                 <ul className="refund-list">
                   <li>
-                    Full refund available if cancellation request is received
-                    within 7 days of purchase and no course materials were
-                    accessed.
+                    Batch transfer may be allowed <strong>only once</strong>.
                   </li>
                   <li>
-                    Partial refunds may apply if a significant portion of
-                    content has been consumed.
+                    Any transfer is subject to administrative approval and seat
+                    availability.
                   </li>
                   <li>
-                    Refunds are not provided for subscription fees that have
-                    completed the billing cycle; cancellations prevent future
-                    billing.
+                    A nominal <strong>re-registration fee</strong> may apply, as
+                    decided by AllAboutCargo.
                   </li>
                 </ul>
-              </section>
-
-              <section
-                id="process"
-                className="ct__card ct__card--spaced refund-section"
-              >
-                <h3 className="ct__cardTitle">Refund Process</h3>
-                <p className="ct__muted">To request a refund:</p>
-                <ol className="refund-steps">
-                  <li>
-                    Contact support at{" "}
-                    <a href="mailto:support@allaboutcargo.in">
-                      support@allaboutcargo.in
-                    </a>{" "}
-                    with your order ID and reason.
-                  </li>
-                  <li>
-                    Our team will review your request and may ask for additional
-                    information.
-                  </li>
-                  <li>
-                    If approved, the refund will be issued to the original
-                    payment method.
-                  </li>
-                </ol>
-              </section>
-
-              <section
-                id="timeline"
-                className="ct__card ct__card--spaced refund-section"
-              >
-                <h3 className="ct__cardTitle">Timeline</h3>
-                <p className="ct__muted">
-                  Once a refund is approved, it typically appears in your
-                  account within:
-                </p>
-                <ul className="refund-list">
-                  <li>3–5 business days for most card payments</li>
-                  <li>
-                    Up to 10 business days for bank transfers, depending on the
-                    bank
-                  </li>
-                </ul>
-              </section>
-
-              <section
-                id="nonrefundable"
-                className="ct__card ct__card--spaced refund-section"
-              >
-                <h3 className="ct__cardTitle">Non-Refundable Items</h3>
-                <p className="ct__muted">
-                  The following items are generally non-refundable:
-                </p>
-                <ul className="refund-list">
-                  <li>Downloaded digital assets after purchase</li>
-                  <li>
-                    Courses or subscriptions where access has been fully granted
-                    and used
-                  </li>
-                  <li>Third-party fees, transaction charges, and taxes</li>
-                </ul>
-              </section>
-
-              <section
-                id="cancellation"
-                className="ct__card ct__card--spaced refund-section"
-              >
-                <h3 className="ct__cardTitle">Cancellation Policy</h3>
-                <p className="ct__muted">
-                  You can cancel orders before they are processed. For
-                  subscriptions, cancellation prevents the next renewal but does
-                  not typically refund the current billing period.
-                </p>
-                <p className="ct__muted">
-                  To cancel, visit your account dashboard or contact support
-                  with your order or subscription ID.
+                <p className="ct__muted" style={{ marginTop: "10px" }}>
+                  Batch transfer, if granted, does <strong>not</strong> imply
+                  any refund or partial refund of the original course fee.
                 </p>
               </section>
 
               <section id="contact" className="ct__card refund-section">
-                <h3 className="ct__cardTitle">Contact</h3>
+                <h3 className="ct__cardTitle">5. Contact for Refund Queries</h3>
                 <p className="ct__muted">
-                  For refund or cancellation requests, contact our support team:
+                  For any questions or queries related to refunds, exceptional
+                  cases, or batch transfers, you can reach us at:
                 </p>
                 <div className="contact-row">
-                  <a
-                    className="ct__chip"
-                    href="mailto:support@allaboutcargo.in"
-                  >
-                    <span className="ct__chipIcon ct__chipIcon--mail">✉️</span>{" "}
-                    support@allaboutcargo.in
-                  </a>
-                  <a className="ct__chip" href="tel:+911234567890">
-                    <span className="ct__chipIcon ct__chipIcon--phone">📞</span>{" "}
-                    +91 12345 67890
+                  <a className="ct__chip" href="mailto:coach@allaboutcargo.in">
+                    <span className="ct__chipIcon ct__chipIcon--mail">✉️</span>
+                    coach@allaboutcargo.in
                   </a>
                 </div>
               </section>
@@ -215,9 +210,10 @@ const RefundCancellation = () => {
           </div>
         </div>
       </main>
+
       <style>
         {`
-    /* Refund & Cancellation Policy — plain CSS, modern & rich UI */
+    /* Refund Policy — plain CSS, modern & rich UI */
 
 /* wrapper */
 .refund-wrap {

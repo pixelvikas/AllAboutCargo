@@ -4,12 +4,15 @@ import Hero from "../../Components/Hero";
 
 const SECTIONS = [
   { id: "overview", title: "Overview" },
-  { id: "collect", title: "Information we collect" },
-  { id: "use", title: "How we use your data" },
-  { id: "share", title: "Sharing & disclosure" },
-  { id: "cookies", title: "Cookies & tracking" },
-  { id: "rights", title: "Your rights" },
-  { id: "changes", title: "Changes to this policy" },
+  { id: "introduction", title: "1. Introduction" },
+  { id: "collect", title: "2. Information We Collect" },
+  { id: "use", title: "3. How We Use Your Information" },
+  { id: "share", title: "4. Sharing of Information" },
+  { id: "security", title: "5. Data Security" },
+  { id: "retention", title: "6. Data Retention" },
+  { id: "rights", title: "7. Your Rights" },
+  { id: "changes", title: "8. Updates to This Policy" },
+  { id: "contact", title: "9. Contact Us" },
 ];
 
 const PrivacyPolicy = () => {
@@ -35,6 +38,13 @@ const PrivacyPolicy = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [active]);
 
+  const handleTocClick = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <>
       <Hero
@@ -52,12 +62,14 @@ const PrivacyPolicy = () => {
           <div className="privacy-header">
             <div>
               <h1 id="privacy-title" className="ct__title privacy-title">
-                Our commitment to your privacy
-                <span className="ct__highlight"> — All About Cargo</span>
+                Privacy Policy
+                <span className="ct__highlight"> — AllAboutCargo</span>
               </h1>
               <p className="privacy-lead">
-                We value your trust. This policy explains what we collect, why,
-                and how you can manage your information.
+                This Privacy Policy explains how AllAboutCargo collects, uses,
+                stores, and protects your personal information when you register
+                for, purchase, and use our online logistics training courses and
+                related services.
               </p>
             </div>
 
@@ -77,10 +89,53 @@ const PrivacyPolicy = () => {
               >
                 <h3 className="ct__cardTitle">Overview</h3>
                 <p className="ct__muted">
-                  We respect your privacy. This Privacy Policy explains what
-                  information we collect, how we use it, with whom we share it,
-                  and your rights regarding your personal information when you
-                  use All About Cargo.
+                  This Privacy Policy applies to the website and online course
+                  platform operated under{" "}
+                  <strong>
+                    AllAboutCargo (a subsidiary of Namami Family Pvt. Ltd.)
+                  </strong>
+                  . By accessing or using our website or application, you agree
+                  to the practices described in this Policy.
+                </p>
+                <ul className="ct__list" style={{ marginTop: "10px" }}>
+                  <li>
+                    <strong>Effective Date:</strong> 19/11/2025
+                  </li>
+                  <li>
+                    <strong>Company:</strong> AllAboutCargo (a subsidiary of
+                    Namami Family Pvt. Ltd.)
+                  </li>
+                  <li>
+                    <strong>Website/App:</strong>{" "}
+                    <a
+                      href="https://www.allaboutcargo.in"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      www.allaboutcargo.in
+                    </a>
+                  </li>
+                </ul>
+              </section>
+
+              <section
+                id="introduction"
+                className="ct__card ct__card--spaced privacy-section"
+              >
+                <h3 className="ct__cardTitle">1. Introduction</h3>
+                <p className="ct__muted">
+                  AllAboutCargo (“we”, “our”, “us”) operates as a logistics
+                  education platform offering online training, assessments, and
+                  certification programs.
+                </p>
+                <p className="ct__muted">
+                  This Privacy Policy explains how we collect, use, store, and
+                  protect your personal information when you register, purchase,
+                  and use our online course.
+                </p>
+                <p className="ct__muted">
+                  By accessing or using our platform, you agree to the practices
+                  described in this Privacy Policy.
                 </p>
               </section>
 
@@ -88,37 +143,76 @@ const PrivacyPolicy = () => {
                 id="collect"
                 className="ct__card ct__card--spaced privacy-section"
               >
-                <h3 className="ct__cardTitle">Information we collect</h3>
-                <p className="ct__muted">
-                  We may collect account details (name, email, phone),
-                  transactional information (orders, invoices), device & usage
-                  data (IP, browser, pages visited), and cookie/analytics data
-                  to improve the experience.
-                </p>
+                <h3 className="ct__cardTitle">2. Information We Collect</h3>
 
-                <h4 className="ct__subTitle">How we collect it</h4>
+                <h4 className="ct__subTitle">A. Personal Information</h4>
+                <p className="ct__muted">
+                  We may collect the following personal details when you
+                  register on our platform, enroll in a course, or interact with
+                  our services:
+                </p>
                 <ul className="ct__list">
-                  <li>When you create or update an account</li>
-                  <li>When you place orders or contact support</li>
-                  <li>Automatically via cookies and analytics tools</li>
+                  <li>Full Name</li>
+                  <li>Email Address</li>
+                  <li>Phone Number</li>
+                  <li>Address</li>
+                  <li>Age or Date of Birth</li>
+                  <li>Login credentials</li>
+                  <li>
+                    Payment-related details (processed via secure third-party
+                    gateways)
+                  </li>
                 </ul>
+
+                <h4 className="ct__subTitle">B. Usage Information</h4>
+                <p className="ct__muted">
+                  When you use our website or course platform, we may collect:
+                </p>
+                <ul className="ct__list">
+                  <li>Course progress</li>
+                  <li>Exam attempts and results</li>
+                  <li>Interactions with course modules</li>
+                  <li>Device information, IP address, browser type</li>
+                </ul>
+
+                <h4 className="ct__subTitle">C. Cookies &amp; Tracking</h4>
+                <p className="ct__muted">
+                  We use cookies and tracking tools to improve user experience,
+                  analytics, and website performance. You may disable cookies
+                  through your browser settings; however, some features of the
+                  website or course platform may not function properly if
+                  cookies are disabled.
+                </p>
               </section>
 
               <section
                 id="use"
                 className="ct__card ct__card--spaced privacy-section"
               >
-                <h3 className="ct__cardTitle">How we use your data</h3>
+                <h3 className="ct__cardTitle">
+                  3. How We Use Your Information
+                </h3>
                 <p className="ct__muted">
-                  We use your data to provide and personalize our services,
-                  process transactions, communicate (order updates, support),
-                  detect fraud, and to improve the Site and product offerings.
+                  We use your information for the following purposes:
                 </p>
-
-                <h4 className="ct__subTitle">Legal basis</h4>
-                <p className="ct__muted">
-                  Where required, we rely on consent, performance of contract,
-                  legitimate interests, and compliance with legal obligations.
+                <ul className="ct__list">
+                  <li>Course access, progress tracking, and certification</li>
+                  <li>User account creation and authentication</li>
+                  <li>Payment processing</li>
+                  <li>Customer service and support</li>
+                  <li>
+                    Internal analytics to improve course quality and user
+                    experience
+                  </li>
+                  <li>
+                    Sending important notifications about exams, policy updates,
+                    and new features
+                  </li>
+                </ul>
+                <p className="ct__muted" style={{ marginTop: "10px" }}>
+                  <strong>
+                    We do not sell your personal information to any third party.
+                  </strong>
                 </p>
               </section>
 
@@ -126,52 +220,131 @@ const PrivacyPolicy = () => {
                 id="share"
                 className="ct__card ct__card--spaced privacy-section"
               >
-                <h3 className="ct__cardTitle">Sharing & disclosure</h3>
+                <h3 className="ct__cardTitle">4. Sharing of Information</h3>
                 <p className="ct__muted">
-                  We share information only with trusted partners: payment
-                  processors, delivery providers, analytics vendors, and legal
-                  authorities when required.
+                  We may share your data with the following categories of
+                  partners, only as necessary to operate and improve our
+                  services:
+                </p>
+                <ul className="ct__list">
+                  <li>Payment gateways for secure transactions</li>
+                  <li>Learning management system (LMS) partners</li>
+                  <li>Service providers (cloud hosting, email services)</li>
+                  <li>
+                    Government authorities, only if legally required or to
+                    comply with applicable law
+                  </li>
+                </ul>
+                <p className="ct__muted" style={{ marginTop: "10px" }}>
+                  All partners and service providers operate under strict
+                  confidentiality and data protection agreements.
                 </p>
               </section>
 
               <section
-                id="cookies"
+                id="security"
                 className="ct__card ct__card--spaced privacy-section"
               >
-                <h3 className="ct__cardTitle">Cookies & tracking</h3>
+                <h3 className="ct__cardTitle">5. Data Security</h3>
                 <p className="ct__muted">
-                  We use cookies and similar technologies for session
-                  functionality, preferences, performance analytics, and
-                  marketing. You can control cookies through your browser
-                  settings; however, some features may not work without them.
+                  We use industry-standard security measures such as encryption,
+                  firewalls, access controls, and monitoring tools to protect
+                  your information against unauthorized access, alteration,
+                  disclosure, or destruction.
                 </p>
+                <p className="ct__muted">
+                  However, while we strive to ensure the highest level of
+                  security, no online platform can guarantee 100% security.
+                </p>
+              </section>
+
+              <section
+                id="retention"
+                className="ct__card ct__card--spaced privacy-section"
+              >
+                <h3 className="ct__cardTitle">6. Data Retention</h3>
+                <p className="ct__muted">
+                  We retain your information in accordance with the following
+                  principles:
+                </p>
+                <ul className="ct__list">
+                  <li>As long as your account remains active</li>
+                  <li>
+                    As required for compliance, auditing, or other legal
+                    obligations
+                  </li>
+                  <li>
+                    For internal research and analytics in an aggregated,
+                    non-identifiable form
+                  </li>
+                </ul>
               </section>
 
               <section
                 id="rights"
                 className="ct__card ct__card--spaced privacy-section"
               >
-                <h3 className="ct__cardTitle">Your rights</h3>
+                <h3 className="ct__cardTitle">7. Your Rights</h3>
                 <p className="ct__muted">
-                  Depending on your jurisdiction, you may have rights to access,
-                  correct, delete, or export your personal information, and to
-                  object to or restrict processing. To exercise these rights,
-                  contact us using the details below.
+                  Depending on applicable laws, you may have the right to:
+                </p>
+                <ul className="ct__list">
+                  <li>Request access to your personal data</li>
+                  <li>Request corrections or updates to your information</li>
+                  <li>
+                    Request deletion of your data (subject to academic record
+                    preservation and legal requirements)
+                  </li>
+                  <li>Withdraw consent where we rely on your consent</li>
+                </ul>
+                <p className="ct__muted" style={{ marginTop: "10px" }}>
+                  To exercise any of these rights, please contact us at{" "}
+                  <a href="mailto:coach@allaboutcargo.in">
+                    coach@allaboutcargo.in
+                  </a>
+                  .
                 </p>
               </section>
 
-              <section id="changes" className="ct__card privacy-section">
-                <h3 className="ct__cardTitle">Changes to this policy</h3>
+              <section
+                id="changes"
+                className="ct__card ct__card--spaced privacy-section"
+              >
+                <h3 className="ct__cardTitle">8. Updates to This Policy</h3>
                 <p className="ct__muted">
-                  We may update this policy to reflect changes in our practices
-                  or legal requirements. We will post the effective date on this
-                  page. Significant changes will be communicated directly where
-                  appropriate.
+                  We may update this Privacy Policy from time to time. Updated
+                  versions will be posted on our platform with a revised{" "}
+                  <strong>“Effective Date”</strong>.
+                </p>
+                <p className="ct__muted">
+                  We encourage you to review this page periodically to stay
+                  informed about how we protect your information.
+                </p>
+              </section>
+
+              <section
+                id="contact"
+                className="ct__card ct__card--spaced privacy-section"
+              >
+                <h3 className="ct__cardTitle">9. Contact Us</h3>
+                <p className="ct__muted">
+                  If you have any questions, concerns, or requests related to
+                  this Privacy Policy or your personal data, you can contact us
+                  at:
+                </p>
+                <p className="ct__muted">
+                  <strong>Namami Family Pvt. Ltd. / AllAboutCargo</strong>
+                  <br />
+                  Email:{" "}
+                  <a href="mailto:coach@allaboutcargo.in">
+                    coach@allaboutcargo.in
+                  </a>
+                  <br />
+                  Powai plaza, office #304, 3rd floor, central avenue,
+                  Hiranandani Business Park, Powai, Mumbai - 400076
                 </p>
               </section>
             </div>
-
-            {/* Right column - TOC + contact */}
           </div>
         </div>
         <style>

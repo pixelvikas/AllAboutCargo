@@ -7,7 +7,6 @@ import Footer from "./Components/Footer";
 
 // Utility
 import AutoScroll from "./Components/AutoScroll";
-import WhatsAppButton from "./Components/WhatsappButton";
 
 // Loader
 import Loading from "./Components/Loading";
@@ -34,7 +33,6 @@ function App() {
     <Router>
       <AutoScroll />
       <ScrollToTop />
-      <WhatsAppButton phoneNumber="9324389141" />
 
       {/* Flex column page shell */}
       <div className="app-shell">

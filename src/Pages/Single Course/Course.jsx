@@ -41,6 +41,7 @@ const SERVICES_DATA = {
       "Shipping Executive",
     ],
     cta: "Gain in-depth expertise in cargo transportation and logistics operations.",
+    link: "https://course.allaboutcargo.in/courses/freight-forwarding/",
   },
 
   2: {
@@ -71,6 +72,7 @@ const SERVICES_DATA = {
       "Logistics Safety Coordinator",
     ],
     cta: "Build a safety-first career with industry-recognized hazardous goods expertise.",
+    link: "https://course.allaboutcargo.in/",
   },
 };
 
@@ -227,8 +229,7 @@ const Single = () => {
                 ))}
               </ul>
             </div>
-
-            <a href="/register" className="ss__cta">
+            <a href={data.link} rel="noopener noreferrer" className="ss__cta">
               {data.cta}
             </a>
           </div>

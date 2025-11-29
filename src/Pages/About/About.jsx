@@ -5,6 +5,7 @@ import bgImage from "../../assets/pageherobg.png";
 import { FiPlus, FiMinus, FiPhoneCall } from "react-icons/fi";
 import { FiTarget, FiAward, FiSmile, FiCheckCircle } from "react-icons/fi";
 import aboutpageimg from "../../assets/aboutpageimg.png";
+import FoundersNote from "../../assets/FoundersNote.jpeg";
 
 const About = () => {
   const [open, setOpen] = React.useState(1); // second open by default
@@ -136,7 +137,7 @@ const About = () => {
             </div>
 
             {/* CTA */}
-            <a href="/register" className="alc__cta">
+            <a href="https://course.allaboutcargo.in/" className="alc__cta">
               JOIN US and start your journey in the logistics industry today!
             </a>
           </div>
@@ -254,6 +255,59 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <section className="founder-note">
+        <div className="founder-note__card">
+          <div className="founder-note__media">
+            <div className="founder-note__imageWrap">
+              <img src={FoundersNote} alt="Founder's portrait" />
+              <span className="founder-note__badge">Founder’s Note</span>
+            </div>
+          </div>
+
+          <div className="founder-note__content">
+            <p className="founder-note__eyebrow">OUR STORY</p>
+            <h2 className="founder-note__title">
+              Knowledge is the most valuable cargo in global trade.
+            </h2>
+
+            <div className="founder-note__quote">
+              <span className="founder-note__quoteMark">“</span>
+              <p>
+                All About Cargo was born from a simple but powerful belief:
+                knowledge is the most valuable cargo in global trade. After
+                spending years navigating the complexities of international
+                logistics, I realized that thousands of aspiring professionals
+                and growing businesses struggle not because of lack of
+                opportunity, but because of lack of structured, practical, and
+                industry-tested guidance.
+                <br />
+                <br />
+                All About Cargo is my commitment to bridge that gap. We combine
+                real-world freight forwarding experience with modern training
+                methods to empower learners with clarity, confidence, and
+                competence. Whether you’re entering the industry, scaling your
+                logistics business, or aiming to sharpen your operations, our
+                mission is to help you master the world of freight — one lesson
+                at a time.
+              </p>
+            </div>
+
+            <div className="founder-note__footer">
+              <div>
+                <p className="founder-note__name">
+                  Amruta Surve, All About Cargo
+                </p>
+                <p className="founder-note__sub">Namami Family Pvt. Ltd.</p>
+              </div>
+              <div className="founder-note__pill">
+                Built for the next generation of logistics professionals
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <style>
         {`
   /* container */
@@ -701,6 +755,185 @@ const About = () => {
     max-width: 100%;
   }
 }
+
+/* Wrapper */
+.founder-note {
+  padding: 64px 16px;
+  background: #f3f2f1;
+  display: flex;
+  justify-content: center;
+}
+
+.founder-note__card {
+  max-width: 1100px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: 32px;
+  align-items: center;
+  position: relative;
+}
+
+/* Media / Image */
+.founder-note__media {
+  position: relative;
+  z-index: 1;
+}
+
+.founder-note__imageWrap {
+  position: relative;
+  border-radius: 24px;
+  padding: 6px;
+  background: linear-gradient(135deg, #d0173e, #961782);
+  box-shadow: 0 20px 45px rgba(148, 27, 89, 0.35);
+}
+
+.founder-note__imageWrap img {
+  display: block;
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  background: #f3f2f1;
+}
+
+/* Ribbon badge */
+.founder-note__badge {
+  position: absolute;
+  bottom: 14px;
+  left: 18px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(243, 242, 241, 0.96);
+  color: #3c0734;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
+}
+
+/* Content */
+.founder-note__content {
+  position: relative;
+  z-index: 1;
+  color: #111827;
+}
+
+.founder-note__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b31f6f;
+  margin-bottom: 8px;
+}
+
+.founder-note__title {
+  font-size: 24px;
+  line-height: 1.25;
+  margin: 0 0 16px;
+  color: #3c0734;
+}
+
+/* Quote block */
+.founder-note__quote {
+  position: relative;
+  padding: 18px 18px 18px 40px;
+  border-radius: 18px;
+  background: rgba(243, 242, 241, 0.9);
+  backdrop-filter: blur(6px);
+  font-size: 14px;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+.founder-note__quoteMark {
+  position: absolute;
+  left: 14px;
+  top: 10px;
+  font-size: 32px;
+  line-height: 1;
+  background: linear-gradient(135deg, #d0173e, #961782);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Footer */
+.founder-note__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.founder-note__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #3c0734;
+}
+
+.founder-note__sub {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.founder-note__pill {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d0173e, #961782);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(148, 27, 89, 0.35);
+}
+
+
+.founder-note__imageWrap:hover {
+  transform: translateY(-2px);
+  transition: transform 220ms ease;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .founder-note__card {
+    grid-template-columns: 1fr;
+    padding: 24px 20px 28px;
+  }
+
+  .founder-note__media {
+    order: -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .founder-note {
+    padding: 48px 12px;
+  }
+
+  .founder-note__title {
+    font-size: 20px;
+  }
+
+  .founder-note__quote {
+    padding: 16px 14px 16px 34px;
+    font-size: 13px;
+  }
+
+  .founder-note__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .founder-note__pill {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 `}
       </style>
     </>
