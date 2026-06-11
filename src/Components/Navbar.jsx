@@ -82,7 +82,7 @@ const Navbar = () => {
         </a>
 
         <a
-          href="https://course.allaboutcargo.in/"
+          href="https://course.allaboutcargo.in/student-registration/"
           className="mobile-register"
           onClick={closeMenu}
         >
