@@ -137,7 +137,10 @@ const About = () => {
             </div>
 
             {/* CTA */}
-            <a href="https://course.allaboutcargo.in/" className="alc__cta">
+            <a
+              href="https://course.allaboutcargo.in/student-registration/"
+              className="alc__cta"
+            >
               JOIN US and start your journey in the logistics industry today!
             </a>
           </div>

@@ -41,7 +41,10 @@ const Navbar = () => {
           <a href="/contact">Contact</a>
         </nav>
 
-        <a href="https://course.allaboutcargo.in/" className="contact-btn">
+        <a
+          href="https://course.allaboutcargo.in/student-registration/"
+          className="contact-btn"
+        >
           Register
         </a>
 

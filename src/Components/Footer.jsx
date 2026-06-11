@@ -7,6 +7,7 @@ import {
   FaXTwitter,
   FaLocationDot,
   FaPhone,
+  FaLinkedin,
   FaRegEnvelope,
 } from "react-icons/fa6";
 
@@ -23,14 +24,11 @@ const Footer = () => {
           </p>
 
           <div className="mol-footer__socials" aria-label="social links">
-            <a href="#" aria-label="Instagram">
-              <FaInstagram />
-            </a>
-            <a href="#" aria-label="Facebook">
-              <FaFacebookF />
-            </a>
-            <a href="#" aria-label="X / Twitter">
-              <FaXTwitter />
+            <a
+              href="https://www.linkedin.com/company/all-about-cargo/"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedin />
             </a>
           </div>
         </div>
@@ -55,7 +53,9 @@ const Footer = () => {
               <a href="/contact">Contact</a>
             </li>
             <li>
-              <a href="/register">Register</a>
+              <a href="https://course.allaboutcargo.in/student-registration/">
+                Register
+              </a>
             </li>
           </ul>
         </nav>
@@ -111,7 +111,9 @@ const Footer = () => {
           <Link to="/courses">Courses</Link>
           <Link to="/team">Team</Link>
           <Link to="/contact">Contact</Link>
-          <Link to="/register">Register</Link>
+          <Link to="https://course.allaboutcargo.in/student-registration/">
+            Register
+          </Link>
           <Link to="/privacy-policy">Privacy</Link>
           <Link to="/terms-condition">Terms</Link>
           <Link to="/refund-cancellation-policy">Refunds</Link>
