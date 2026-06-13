@@ -179,15 +179,15 @@ const Single = () => {
                 <h5>How Can We Help</h5>
                 <p>If you need any help, please feel free to contact us</p>
 
-                <a className="ss__chip" href="tel:+02222334455">
+                <a className="ss__chip" href="tel:+02245158999">
                   <span className="ss__chipIcon" aria-hidden="true">
                     <FiPhone />
                   </span>
                   <span className="sr-only">Call: </span>
-                  +022 22334455
+                  +02245158999
                 </a>
 
-                <a className="ss__chip" href="mailto:info@gmail.com">
+                <a className="ss__chip" href="mailto:coach@allaboutcargo.in">
                   <span
                     className="ss__chipIcon ss__chipIcon--mail"
                     aria-hidden="true"
@@ -195,7 +195,7 @@ const Single = () => {
                     <FiMail />
                   </span>
                   <span className="sr-only">Email: </span>
-                  info@gmail.com
+                  coach@allaboutcargo.in
                 </a>
               </div>
             </div>
