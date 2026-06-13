@@ -233,7 +233,7 @@ function Home() {
               <button
                 className="cta"
                 onClick={() =>
-                  (window.location.href = "https://course.allaboutcargo.in/")
+                  (window.location.href = "https://course.allaboutcargo.in/student-registration/")
                 }
               >
                 Get Certified
